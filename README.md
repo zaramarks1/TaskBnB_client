@@ -68,5 +68,10 @@ Create a Unit :
 
 Error while creating a unit :
 
+<img width="1440" alt="Screenshot 2023-03-26 at 19 06 42" src="https://user-images.githubusercontent.com/96051289/227813474-27aad450-08c3-4e79-b409-e83d2859f6f5.png">
+
+View all units : 
+
+<img width="1432" alt="Screenshot 2023-03-26 at 19 07 04" src="https://user-images.githubusercontent.com/96051289/227813506-4f2755c5-8b19-4b8a-b7c2-ec22a6f75fd2.png">
 
 
