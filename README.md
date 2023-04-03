@@ -56,5 +56,22 @@ If you go to **http://localhost:3000/** you should be seing the TaskBnB web page
 In order to create a Unit and View all units, make sure the backend project is running on your computer with the localhost:8080 port. 
 
 
+#Results
+
+Welcome page :
+
+<img width="1439" alt="Screenshot 2023-03-26 at 19 00 50" src="https://user-images.githubusercontent.com/96051289/227813158-5ad9ef3c-818b-412b-b16b-147050e4aaa3.png">
+
+Create a Unit : 
+
+<img width="1434" alt="Screenshot 2023-03-26 at 19 03 40" src="https://user-images.githubusercontent.com/96051289/227813326-64d4f481-f02b-4666-9df9-8f0ae5a48621.png">
+
+Error while creating a unit :
+
+<img width="1440" alt="Screenshot 2023-03-26 at 19 06 42" src="https://user-images.githubusercontent.com/96051289/227813474-27aad450-08c3-4e79-b409-e83d2859f6f5.png">
+
+View all units : 
+
+<img width="1432" alt="Screenshot 2023-03-26 at 19 07 04" src="https://user-images.githubusercontent.com/96051289/227813506-4f2755c5-8b19-4b8a-b7c2-ec22a6f75fd2.png">
 
 
