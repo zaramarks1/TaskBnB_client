@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../service/auth.service";
+import Title from "./Title";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
       await authService.login(email, password).then(
         () => {
           navigate("/");
-         //window.location.reload();
+         window.location.reload();
         },
         (error) => {
           console.log(error);
@@ -26,9 +27,12 @@ const Login = () => {
   };
 
   return (
+    <>
+    
+    <Title title = "Login"/>
+   
     <div>
       <form onSubmit={handleLogin}>
-        <h3>Login</h3>
         <input
           type="text"
           placeholder="email"
@@ -44,6 +48,8 @@ const Login = () => {
         <button type="submit">Log in</button>
       </form>
     </div>
+
+    </>
   );
 };
 

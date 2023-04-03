@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import authService from "../service/auth.service";
 import { useNavigate } from "react-router-dom";
+import Title from "./Title";
 
 const Register = () => {
   const [firstname, setFirstname] = useState("");
@@ -18,7 +19,7 @@ const Register = () => {
           // check for token and user already exists with 200
              console.log("Sign up successfully", response);
           navigate("/");
-          //window.location.reload();
+          window.location.reload();
         },
         (error) => {
           console.log(error);
@@ -31,13 +32,14 @@ const Register = () => {
 
   return (
     <div>
+       <Title title = "Sign Up"/>
       <form onSubmit={handleSignup}>
-        <h3>Sign up</h3>
+       
         <input
           type="text"
           placeholder="firstname"
           value={firstname}
-          onChange={(e) => setLastname(e.target.value)}
+          onChange={(e) => setFirstname(e.target.value)}
         />
         <input
           type="text"

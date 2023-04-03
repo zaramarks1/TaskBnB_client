@@ -33,12 +33,6 @@ function Navbar() {
             <Link to= "/viewUnits">View all units</Link>
         </li>
 
-        {!currentUser && (
-           <li>
-            <Link to= "/register">Register</Link>
-          </li>
-        )}
-
         {currentUser ? (
           <>
          
@@ -56,7 +50,7 @@ function Navbar() {
         ) : (
           <>
           <li>
-          <Link to= "/register">Register</Link>
+          <Link to= "/register">Sign up</Link>
           </li>
 
           <li>
