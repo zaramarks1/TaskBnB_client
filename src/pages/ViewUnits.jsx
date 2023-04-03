@@ -24,7 +24,7 @@ const ViewUnits = () => {
           setLoading(false);
         },
         (error) => {
-          setMessage(error.message);
+          setMessage(error.response.data.message);
           setData(null);
           setLoading(false);
         }

@@ -6,11 +6,13 @@ import Title from "./Title";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setMessage("");
     try {
       await authService.login(email, password).then(
         () => {
@@ -19,6 +21,7 @@ const Login = () => {
         },
         (error) => {
           console.log(error);
+          setMessage(error.response.data.message);
         }
       );
     } catch (err) {
@@ -47,6 +50,7 @@ const Login = () => {
         />
         <button type="submit">Log in</button>
       </form>
+      <h3 className="error">{message ? <p>{message}</p> : null}</h3>
     </div>
 
     </>

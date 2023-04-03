@@ -26,7 +26,8 @@ const AddUnit = () =>{
           setSuccess(true);
         },
         (error) => {
-          setMessage(error.message);
+          setMessage(error.response.data.message);
+          console.log("error");
         });
       }catch (error){
         console.log(error);

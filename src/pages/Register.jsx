@@ -8,25 +8,31 @@ const Register = () => {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
+
     e.preventDefault();
+    setMessage("");
     try {
       await authService.register(firstname, lastname, email, password).then(
         (response) => {
           // check for token and user already exists with 200
-             console.log("Sign up successfully", response);
+          console.log("Sign up successfully", response);
           navigate("/");
           window.location.reload();
         },
         (error) => {
-          console.log(error);
+          console.log(error.message);
+          console.log("error");
+          setMessage(error.response.data.message);
         }
       );
     } catch (err) {
-      console.log(err);
+      console.log("ble");
+      setMessage(err.message);
     }
   };
 
@@ -61,6 +67,7 @@ const Register = () => {
         />
         <button type="submit">Sign up</button>
       </form>
+      <h3 className="error">{message ? <p>{message}</p> : null}</h3>
     </div>
   );
 };
