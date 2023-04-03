@@ -5,62 +5,53 @@ import {useState, useEffect} from 'react';
 import axios from "axios"
 import Title from './Title';
 
+import unitService from '../service/unit.service';
+
 const ViewUnits = () => {
 
-    const [capacity, setCapacity] = useState("");
-    const [address, setAddress] = useState("");
-    const [unitType, setUnitType] = useState("");
-    const [message, setMessage] = useState("");
-    const [success, setSuccess] = useState(false);
-    const [units, setUnits] = useState([]);
 
-    const [data, setData] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState(null);
 
     useEffect(() => {
-        const getData = async () => {
-          try {
-            const response = await axios.get(
-              `http://localhost:8080/api/v1/units`
-            );
-            setData(response.data);
-            setSuccess(true);
-            setMessage(null);
-          } catch (err) {
-            setMessage(err.message);
-            setData(null);
-          } finally {
-            setLoading(false);
-            setSuccess(true);
-          }
-        };
-        getData();
-      }, []);
+      unitService.getAllUnits().then(
+        (response) => {
+          setData(response.data);
+          setSuccess(true);
+          setLoading(false);
+        },
+        (error) => {
+          setMessage(error.message);
+          setData(null);
+          setLoading(false);
+        }
+      );
+    }, []);
 
-
-    // let handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //       let res = await fetch("http://localhost:8080/api/v1/units");
-    //       let resJson = await res.json();
-    //       if (res.status === 200) {
-    //         // setCapacity(resJson.capacity);
-    //         // setAddress(resJson.address);
-    //         // setUnitType(resJson.unitType);
-    //         // setOwnerId(resJson.ownerID);
-    //         setUnits(arr => [...arr , `${arr.length}`]);
+    // useEffect(() => {
+    //     const getData = async () => {
+    //       try {
+    //         const response = await axios.get(
+    //           `http://localhost:8080/api/v1/units`
+    //         );
+    //         setData(response.data);
     //         setSuccess(true);
-    //       } else {
-    //         setMessage(resJson.message);
+    //         setMessage(null);
+    //       } catch (err) {
+    //         setMessage(err.message);
+    //         setData(null);
+    //       } finally {
+    //         setLoading(false);
+    //         setSuccess(true);
     //       }
-    //     } catch (err) {
-    //       console.log(err);
-    //     }
-    //   };
-    
+    //     };
+    //     getData();
+    //   }, []);
 
-
+  
 return(
     <>
 

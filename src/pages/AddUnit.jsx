@@ -3,6 +3,8 @@ import '../css/pages.css';
 import {useState, useEffect} from 'react';
 import Title from './Title';
 
+import unitService from '../service/unit.service';
+
 const AddUnit = () =>{
 
     const [capacity, setCapacity] = useState("");
@@ -10,36 +12,56 @@ const AddUnit = () =>{
     const [unitType, setUnitType] = useState("");
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
-  
-  
+
     let handleSubmit = async (e) => {
+      setMessage("");
       e.preventDefault();
+
       try {
-        let res = await fetch("http://localhost:8080/api/v1/units", {
-          method: "POST",
-          body: JSON.stringify({
-            capacity: capacity,
-            address: address,
-            unitType: unitType,
-            ownerId: '1'
-          }),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-          }
-        });
-        let resJson = await res.json();
-        if (res.status === 200) {
+        await unitService.addUnit(capacity, address, unitType).then(
+        (response) => {
           setCapacity("");
           setAddress("");
           setUnitType("");
           setSuccess(true);
-        } else {
-          setMessage(resJson.message);
-        }
-      } catch (err) {
-        console.log(err);
+        },
+        (error) => {
+          setMessage(error.message);
+        });
+      }catch (error){
+        console.log(error);
       }
     };
+
+
+    // let handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   try {
+    //     let res = await fetch("http://localhost:8080/api/v1/units", {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         capacity: capacity,
+    //         address: address,
+    //         unitType: unitType,
+    //         ownerId: '1'
+    //       }),
+    //       headers: {
+    //         'Content-type': 'application/json; charset=UTF-8'
+    //       }
+    //     });
+    //     let resJson = await res.json();
+    //     if (res.status === 200) {
+    //       setCapacity("");
+    //       setAddress("");
+    //       setUnitType("");
+    //       setSuccess(true);
+    //     } else {
+    //       setMessage(resJson.message);
+    //     }
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
   
     return (
      <>
