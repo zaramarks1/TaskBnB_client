@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../service/auth.service";
 import Title from "./Title";
+import '../css/auth.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -32,22 +33,34 @@ const Login = () => {
   return (
     <>
     
-    <Title title = "Login"/>
+    {/* <Title title = "Login"/> */}
    
-    <div>
+    <div className="authDiv">
+      <h2>Welcome back! </h2>
       <form onSubmit={handleLogin}>
+        <div className="txt_field">
+        <label>Email</label>
         <input
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+         <span></span>
+         
+        </div>
+      
+        <div className="txt_field">
+        <label>Password</label>
         <input
           type="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <span></span>
+       
+        </div>
         <button type="submit">Log in</button>
       </form>
       <h3 className="error">{message ? <p>{message}</p> : null}</h3>

@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.authDiv{
+    padding: 35px;
+    color: white;
+    background: linear-gradient(20deg,#beacf3, #8C69F4);
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    /* top: 50%; */
+    left: 400px;
+    /* margin: -15% 0 25% 25%; */
+    margin-top: 100px;
+    align-items: center;
+    /* position: absolute; */
+    display: flex;
+    position:block;
+    width: 600px;
+    /* display:block; */
+    /* flex-flow: column wrap; */
+}
+
+.txt_field{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.txt_field label{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    text-align: left !important;
+    /* display:block; */
+}
+
+.txt_field input{
+    font-style: normal;
+    border: none !important;
+	border-bottom: 2px solid #5b28f5 !important;
+	background: none !important;
+    background-color: none !important;
+	font-weight: 700;
+    box-shadow:0px;
+    display: block !important;
+}
+
+.txt_field input:active,
+.txt_field input:focus,
+.txt_field input:hover {
+	outline: none;
+    background: none;
+    background-color: none;
+	border-bottom-color: #6A679E;
+}
+
+
+/* .txt_field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #8C69F4;
+    transition: .5s;
+} */
+/* form .txt_field{
+    position: relative;
+    border-bottom: 2px solid white;
+    margin: 30px 0;
+}
+
+.txt_field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.txt_field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: white;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+} */
