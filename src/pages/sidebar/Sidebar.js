@@ -73,10 +73,11 @@ const Sidebar = () => {
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav>
-          <NavIcon to='#'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </NavIcon>
-
+        {currentUser && 
+            <NavIcon to='#'>
+                <FaIcons.FaBars onClick={showSidebar} />
+            </NavIcon>
+        }
           <NavIcon to='/'>Home</NavIcon>
 
           <NavIcon to='/viewUnits'>View All Units</NavIcon>
