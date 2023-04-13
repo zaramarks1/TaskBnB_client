@@ -26,9 +26,6 @@ function Navbar() {
         <li>
           <Link to="/">Home</Link>
         </li>
-        {/* <li>
-          <Link to="/test2">Test 2</Link>
-        </li> */}
         <li>
             <Link to= "/viewUnits">View all units</Link>
         </li>
