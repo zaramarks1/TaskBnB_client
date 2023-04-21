@@ -35,6 +35,10 @@ const updateUnit = (id, capacity, address, unitType) => {
 
 };
 
+const deleteUnit = (id) => {
+  return axios.delete(API_URL + '/' + id, { headers: authHeader() })
+};
+
 
 
 const unitService = {
@@ -43,6 +47,7 @@ const unitService = {
   getMyUnits,
   getUnitById,
   updateUnit,
+  deleteUnit,
 };
 
 export default unitService;

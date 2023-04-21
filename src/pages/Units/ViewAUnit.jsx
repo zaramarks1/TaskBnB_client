@@ -3,12 +3,14 @@ import '../../css/pages.css';
 import {useState, useEffect} from 'react';
 import Title from '../Title';
 import unitService from '../../service/unit.service';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
 
 
 const ViewAUnit = () =>{
 
     const params = useParams();
+    const navigate = useNavigate();
 
     const [success, setSuccess] = useState(false);
     const [data, setData] = useState();
@@ -32,7 +34,25 @@ const ViewAUnit = () =>{
       );
     }, []);
 
-    console.log(data); 
+    let handleDelete = async (e) => {
+      setMessage("");
+      e.preventDefault();
+
+      try {
+        await unitService.deleteUnit(params.id).then(
+        (response) => {
+          setSuccess(true);
+          navigate('/my-units'); 
+          alert('Unit was successfully deleted');
+        },
+        (error) => {
+          setMessage(error.response.data.message);
+          console.log("error");
+        });
+      }catch (error){
+        console.log(error);
+      }
+    };
 
     return (
         <>
@@ -51,9 +71,9 @@ const ViewAUnit = () =>{
               <button> Edit </button>
             </Link>
             
-            <button> Delete </button>
-            <button> View Listings </button>
-            <button> Add a Listing </button>
+            <button onClick={handleDelete}> Delete </button>
+            <button> View Listings (not working yet heheh) </button>
+            <button> Add a Listing (not working yet heheh)</button>
         </>}
 
 

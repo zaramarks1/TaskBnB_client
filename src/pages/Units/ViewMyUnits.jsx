@@ -43,18 +43,16 @@ return(
     <ul>
         {data &&
           data.map(({ id, capacity, address, unitType }) => (
-            <li className='list' key = {id}  >
-                <h3>Capacity : {capacity}</h3>
-                <h3>Address : {address}</h3>
-                <h3>Unit type : {unitType}</h3>
 
-                <Link to={{ pathname:`/view-a-unit/${id}`}}
-                >see more</Link>
-            </li>
-
-            
- 
-            
+            <Link to={{ pathname:`/view-a-unit/${id}`}}>
+                  <>
+                  <li className='list' key = {id}  >
+                    <h3>Capacity : {capacity}</h3>
+                    <h3>Address : {address}</h3>
+                    <h3>Unit type : {unitType}</h3>
+                  </li>
+                  </>
+            </Link>
           ))}
       </ul>
     </div>
