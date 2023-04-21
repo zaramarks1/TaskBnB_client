@@ -9,6 +9,7 @@ import Login from './Login';
 import ViewMyUnits from './Units/ViewMyUnits';
 import Account from './Account';
 import ViewAUnit from './Units/ViewAUnit';
+import UpdateUnit from './Units/UpdateUnit';
 
 const Main = () => {
   return (
@@ -21,6 +22,7 @@ const Main = () => {
       <Route exact path='/my-units' element={<ViewMyUnits/>}></Route>
       <Route exact path='/account' element={<Account/>}></Route>
       <Route exact path='/view-a-unit/:id' element={<ViewAUnit/>}></Route>
+      <Route exact path='/update-unit/:id' element={<UpdateUnit/>}></Route>
 
     </Routes>
   );

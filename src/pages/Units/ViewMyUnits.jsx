@@ -48,7 +48,7 @@ return(
                 <h3>Address : {address}</h3>
                 <h3>Unit type : {unitType}</h3>
 
-                <Link to={`/view-a-unit/${id}`}
+                <Link to={{ pathname:`/view-a-unit/${id}`}}
                 >see more</Link>
             </li>
 

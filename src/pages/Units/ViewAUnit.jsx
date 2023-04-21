@@ -3,7 +3,7 @@ import '../../css/pages.css';
 import {useState, useEffect} from 'react';
 import Title from '../Title';
 import unitService from '../../service/unit.service';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 const ViewAUnit = () =>{
@@ -32,17 +32,33 @@ const ViewAUnit = () =>{
       );
     }, []);
 
+    console.log(data); 
+
     return (
         <>
+
+        <Title title = "Your Unit"></Title>
+
         
         {data &&
         <>
             <h1>Capacity : {data.capacity}</h1>
             <h1>Address : {data.address}</h1>
             <h1>Unit type : {data.unitType}</h1>
-        </>
-              
-          }
+
+
+            <Link to= {`/update-unit/${params.id}`} state= {{unit :data}}>
+              <button> Edit </button>
+            </Link>
+            
+            <button> Delete </button>
+            <button> View Listings </button>
+            <button> Add a Listing </button>
+        </>}
+
+
+
+
         
         </>
        

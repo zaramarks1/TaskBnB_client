@@ -25,6 +25,16 @@ const addUnit = (capacity,address,unitType) => {
 },  { headers: authHeader() })
 };
 
+const updateUnit = (id, capacity, address, unitType) => {
+
+  return axios.put(API_URL + '/' + id ,{
+    capacity: capacity,
+    address: address,
+    unitType: unitType
+},  { headers: authHeader() })
+
+};
+
 
 
 const unitService = {
@@ -32,6 +42,7 @@ const unitService = {
   addUnit,
   getMyUnits,
   getUnitById,
+  updateUnit,
 };
 
 export default unitService;
