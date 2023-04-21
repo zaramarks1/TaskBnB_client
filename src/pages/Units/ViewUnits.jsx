@@ -1,11 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import '../css/pages.css';
+import '../../css/pages.css';
 import {useState, useEffect} from 'react';
-import axios from "axios"
-import Title from './Title';
+import Title from '../Title';
 
-import unitService from '../service/unit.service';
+import unitService from '../../service/unit.service';
 
 const ViewUnits = () => {
 

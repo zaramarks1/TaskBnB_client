@@ -1,9 +1,9 @@
 import React from 'react';
-import '../css/pages.css';
+import '../../css/pages.css';
 import {useState, useEffect} from 'react';
-import Title from './Title';
+import Title from '../Title';
 
-import unitService from '../service/unit.service';
+import unitService from '../../service/unit.service';
 
 const AddUnit = () =>{
 

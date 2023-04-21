@@ -7,16 +7,16 @@ const getAllUnits = () => {
   return axios.get(API_URL);
 };
 
+const getMyUnits = () => {
+  return axios.get(API_URL + '/my', {headers: authHeader()});
+};
+
 const addUnit = (capacity,address,unitType) => {
 
-    console.log(capacity);
-    console.log(address);
   return axios.post(API_URL,{
         capacity: capacity,
         address: address,
-        unitType: unitType,
-        ownerId: '1'
-
+        unitType: unitType
 },  { headers: authHeader() })
 };
 
@@ -25,6 +25,7 @@ const addUnit = (capacity,address,unitType) => {
 const unitService = {
   getAllUnits,
   addUnit,
+  getMyUnits,
 };
 
 export default unitService;

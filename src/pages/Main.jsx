@@ -2,10 +2,11 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
-import AddUnit from './AddUnit';
-import ViewUnits from './ViewUnits';
+import AddUnit from './Units/AddUnit';
+import ViewUnits from './Units/ViewUnits';
 import Register from './Register';
 import Login from './Login';
+import ViewMyUnits from './Units/ViewMyUnits';
 
 const Main = () => {
   return (
@@ -15,6 +16,8 @@ const Main = () => {
       <Route exact path='/viewUnits' element={<ViewUnits/>}></Route>
       <Route exact path='/register' element={<Register/>}></Route>
       <Route exact path='/login' element={<Login/>}></Route>
+      <Route exact path='/my-units' element={<ViewMyUnits/>}></Route>
+
     </Routes>
   );
 }

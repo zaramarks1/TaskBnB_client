@@ -12,7 +12,7 @@ const Home = () => {
     if (user) {
       setCurrentUser(user);
     }
-  }, []);
+    }, []);
 
     return (
       <>

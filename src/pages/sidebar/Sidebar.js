@@ -80,8 +80,6 @@ const Sidebar = () => {
         }
           <NavIcon to='/'>Home</NavIcon>
 
-          <NavIcon to='/viewUnits'>View All Units</NavIcon>
-
           {currentUser ? (
                 <>
                 <NavIcon to='/viewUnits'>View All Units</NavIcon>

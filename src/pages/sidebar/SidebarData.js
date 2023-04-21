@@ -6,60 +6,42 @@ import * as RiIcons from 'react-icons/ri';
 
 export const SidebarData = [
   {
-    title: 'Overview',
-    path: '/overview',
+    title: 'My account',
+    path: '/',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Users',
-        path: '/overview/users',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Revenue',
-        path: '/overview/revenue',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
+    iconOpened: <RiIcons.RiArrowUpSFill />
   },
   {
-    title: 'Reports',
-    path: '/reports',
+    title: 'Units',
+    // path: '/my-units',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Reports',
-        path: '/reports/reports1',
+        title: 'My Units',
+        path: '/my-units',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
       {
-        title: 'Reports 2',
-        path: '/reports/reports2',
+        title: 'Create a Unit',
+        path: '/addUnit',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
-      },
-      {
-        title: 'Reports 3',
-        path: '/reports/reports3',
-        icon: <IoIcons.IoIosPaper />
       }
     ]
   },
   {
-    title: 'Products',
-    path: '/products',
+    title: 'My Request',
+    path: '/myRequests',
     icon: <FaIcons.FaCartPlus />
   },
   {
-    title: 'Team',
-    path: '/team',
+    title: 'My Reservations',
+    path: '/myReservations',
     icon: <IoIcons.IoMdPeople />
   },
   {
@@ -84,8 +66,8 @@ export const SidebarData = [
     ]
   },
   {
-    title: 'Support',
-    path: '/support',
+    title: 'Logout',
+    path: '/logout',
     icon: <IoIcons.IoMdHelpCircle />
   }
 ];
