@@ -10,7 +10,7 @@ import {useEffect } from "react";
 import authService from '../../service/auth.service';
 
 const Nav = styled.div`
-  background: #15171c;
+  background: #6D41F3;
   height: 80px;
   display: flex;
   justify-content: flex-start;
@@ -28,7 +28,7 @@ const NavIcon = styled(Link)`
 
   &:hover {
     cursor: pointer;
-    color:#6D41F3;
+    color:black;
   }
 `;
 

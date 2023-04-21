@@ -19,13 +19,18 @@ const Home = () => {
      
       <Title title="Welcome to TaskBnB" />
 
+      <div className='divDisplay'>
+
       { currentUser ? (
-        <h2>You are logged in! {currentUser.email}
+        <h2>You are logged in! 
         </h2>
       ) : (
-        <h1>You are not logged in </h1>
+        <h1>You are not logged in!</h1>
       )}
 
+      </div>
+
+    
       </>
     );
   };

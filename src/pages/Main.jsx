@@ -7,6 +7,7 @@ import ViewUnits from './Units/ViewUnits';
 import Register from './Register';
 import Login from './Login';
 import ViewMyUnits from './Units/ViewMyUnits';
+import Account from './Account';
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
       <Route exact path='/register' element={<Register/>}></Route>
       <Route exact path='/login' element={<Login/>}></Route>
       <Route exact path='/my-units' element={<ViewMyUnits/>}></Route>
+      <Route exact path='/account' element={<Account/>}></Route>
 
     </Routes>
   );
