@@ -28,7 +28,7 @@ export const SidebarData = [
       },
       {
         title: 'Create a Unit',
-        path: '/addUnit',
+        path: '/add-unit',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       }

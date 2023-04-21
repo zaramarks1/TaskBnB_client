@@ -2,6 +2,7 @@ import React from 'react';
 import '../../css/pages.css';
 import {useState, useEffect} from 'react';
 import Title from '../Title';
+import { Link } from 'react-router-dom';
 
 import unitService from '../../service/unit.service';
 
@@ -28,27 +29,6 @@ const ViewMyUnits = () => {
         }
       );
     }, []);
-
-    // useEffect(() => {
-    //     const getData = async () => {
-    //       try {
-    //         const response = await axios.get(
-    //           `http://localhost:8080/api/v1/units`
-    //         );
-    //         setData(response.data);
-    //         setSuccess(true);
-    //         setMessage(null);
-    //       } catch (err) {
-    //         setMessage(err.message);
-    //         setData(null);
-    //       } finally {
-    //         setLoading(false);
-    //         setSuccess(true);
-    //       }
-    //     };
-    //     getData();
-    //   }, []);
-
   
 return(
     <>
@@ -63,11 +43,16 @@ return(
     <ul>
         {data &&
           data.map(({ id, capacity, address, unitType }) => (
-            <li className='list' key = {id}>
+            <li className='list' key = {id}  >
                 <h3>Capacity : {capacity}</h3>
                 <h3>Address : {address}</h3>
                 <h3>Unit type : {unitType}</h3>
+
+                <Link to={`/view-a-unit/${id}`}
+                >see more</Link>
             </li>
+
+            
  
             
           ))}

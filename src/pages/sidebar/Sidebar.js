@@ -82,7 +82,7 @@ const Sidebar = () => {
 
           {currentUser ? (
                 <>
-                <NavIcon to='/viewUnits'>View All Units</NavIcon>
+                <NavIcon to='/view-units'>View All Units</NavIcon>
 
                 <NavIcon onClick={logOut} >Logout</NavIcon>
                 </>

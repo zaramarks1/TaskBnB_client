@@ -7,6 +7,11 @@ const getAllUnits = () => {
   return axios.get(API_URL);
 };
 
+const getUnitById = (id) =>{
+
+  return axios.get(API_URL +'/' +id, {headers: authHeader()});
+};
+
 const getMyUnits = () => {
   return axios.get(API_URL + '/my', {headers: authHeader()});
 };
@@ -26,6 +31,7 @@ const unitService = {
   getAllUnits,
   addUnit,
   getMyUnits,
+  getUnitById,
 };
 
 export default unitService;
