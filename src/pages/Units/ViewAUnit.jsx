@@ -77,11 +77,10 @@ const ViewAUnit = () =>{
             <button> Add a Listing (not working yet heheh)</button>
         </>}
 
-
-
+        <h3 className="error">{message ? <p>{message}</p> : null}</h3>
 
         
-        </>
+       </>
        
 
     );

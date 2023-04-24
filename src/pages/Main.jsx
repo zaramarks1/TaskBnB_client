@@ -10,7 +10,7 @@ import ViewMyUnits from './Units/ViewMyUnits';
 import Account from './Account';
 import ViewAUnit from './Units/ViewAUnit';
 import UpdateUnit from './Units/UpdateUnit';
-
+import ViewAListing from './Listings/ViewAListing';
 import ViewListings from './Listings/ViewListings';
 
 const Main = () => {
@@ -26,6 +26,7 @@ const Main = () => {
       <Route exact path='/view-a-unit/:id' element={<ViewAUnit/>}></Route>
       <Route exact path='/update-unit/:id' element={<UpdateUnit/>}></Route>
       <Route exact path='/view-listings' element={<ViewListings/>}></Route>
+      <Route exact path='/view-a-listing/:id' element={<ViewAListing/>}></Route>
 
     </Routes>
   );

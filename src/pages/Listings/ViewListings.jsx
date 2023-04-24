@@ -43,17 +43,15 @@ return(
 
     <ul>
         {data &&
-          data.map(({ id, _id, title, address, description, dateStart, dateEnd, listingStatus, unitId }) => (
+          data.map( l => (
 
-            <Link to={{ pathname:`/view-a-listing/${id || _id}`}}>
+            <Link to={{ pathname:`/view-a-listing/${l.id || l._id}`}}>
                   <>
-                  <li className='list' key = {id || _id}  >
-                    <h3>Title : {title}</h3>
-                    <h3>Address : {address}</h3>
-                    <h3>Description: {description}</h3>
-                    <h3>Start date: {dateStart}</h3>
-                    <h3>End date: {dateEnd}</h3>
-                    <h3>Listing Status : {listingStatus}</h3>
+                  <li className='list' key = {l.id ||l. _id}  >
+                    <h3>Title : {l.title}</h3>
+                    <h3>Address : {l.address}</h3>
+                    <h3>Start date: {l.dateStart}</h3>
+                    <h3>End date: {l.dateEnd}</h3>
                   </li>
                   </>
             </Link>

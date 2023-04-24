@@ -40,16 +40,18 @@ return(
     {loading && <div>A moment please...</div>}
     <h3 className="success">{success ? <p>Units loaded ! </p> : <p>not able to fetch data </p> }</h3>
 
+    {/* {this.state.data.map(d => (<li key={d.id}>{d.name}</li>))}  */}
+
     <ul>
         {data &&
-          data.map(({ id, _id, capacity, address, unitType }) => (
+          data.map(unit => (
 
-            <Link to={{ pathname:`/view-a-unit/${id || _id}`}}>
+            <Link to={`/view-a-unit/${unit.id || unit._id}`}>
                   <>
-                  <li className='list' key = {id || _id}  >
-                    <h3>Capacity : {capacity}</h3>
-                    <h3>Address : {address}</h3>
-                    <h3>Unit type : {unitType}</h3>
+                  <li className='list' key = {unit.id || unit._id}  >
+                    <h3>Capacity : {unit.capacity}</h3>
+                    <h3>Address : {unit.address}</h3>
+                    <h3>Unit type : {unit.unitType}</h3>
                   </li>
                   </>
             </Link>
