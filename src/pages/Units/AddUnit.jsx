@@ -13,6 +13,7 @@ const AddUnit = () =>{
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
 
+
     let handleSubmit = async (e) => {
       setMessage("");
       e.preventDefault();
@@ -31,38 +32,9 @@ const AddUnit = () =>{
         });
       }catch (error){
         console.log(error);
+        setMessage(error.response.data.message);
       }
     };
-
-
-    // let handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   try {
-    //     let res = await fetch("http://localhost:8080/api/v1/units", {
-    //       method: "POST",
-    //       body: JSON.stringify({
-    //         capacity: capacity,
-    //         address: address,
-    //         unitType: unitType,
-    //         ownerId: '1'
-    //       }),
-    //       headers: {
-    //         'Content-type': 'application/json; charset=UTF-8'
-    //       }
-    //     });
-    //     let resJson = await res.json();
-    //     if (res.status === 200) {
-    //       setCapacity("");
-    //       setAddress("");
-    //       setUnitType("");
-    //       setSuccess(true);
-    //     } else {
-    //       setMessage(resJson.message);
-    //     }
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
   
     return (
      <>
@@ -84,13 +56,13 @@ const AddUnit = () =>{
             onChange={(e) => setAddress(e.target.value)}
           />
           <label className='inputLabel'>Unit Type</label>
-          <input
-            type="text"
-            value={unitType}
-            placeholder="UnitType"
-            onChange={(e) => setUnitType(e.target.value)}
-          />
-  
+
+          <select  type="text" id="unitType"  onChange={(e) => setUnitType(e.target.value)}>
+              <option selected value="HOUSE">House</option>
+              <option value="APT">Appartment</option>
+              <option value="STUDIO">Studio</option>
+              <option value="ROOM">Room</option>
+          </select>
         <h3 className="error">{message ? <p>{message}</p> : null}</h3>
         <h3 className="success">{success ? <p>Unit was created ! </p> : null}</h3>
   

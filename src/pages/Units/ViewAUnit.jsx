@@ -48,6 +48,7 @@ const ViewAUnit = () =>{
         (error) => {
           setMessage(error.response.data.message);
           console.log("error");
+          alert(message);
         });
       }catch (error){
         console.log(error);

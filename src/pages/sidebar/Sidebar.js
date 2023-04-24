@@ -84,6 +84,8 @@ const Sidebar = () => {
                 <>
                 <NavIcon to='/view-units'>View All Units</NavIcon>
 
+                <NavIcon to='/view-listings'>View All Listings</NavIcon>
+
                 <NavIcon onClick={logOut} >Logout</NavIcon>
                 </>
 

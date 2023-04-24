@@ -5,8 +5,9 @@ import Title from '../Title';
 import { Link } from 'react-router-dom';
 
 import unitService from '../../service/unit.service';
+import listingService from '../../service/listing.service';
 
-const ViewMyUnits = () => {
+const Viewlistings = () => {
 
 
     const [success, setSuccess] = useState(false);
@@ -16,7 +17,7 @@ const ViewMyUnits = () => {
     const [message, setMessage] = useState(null);
 
     useEffect(() => {
-      unitService.getMyUnits().then(
+      listingService.getAllListings().then(
         (response) => {
           setData(response.data);
           setSuccess(true);
@@ -33,23 +34,26 @@ const ViewMyUnits = () => {
 return(
     <>
 
-    <Title title = "View All Units"/>
+    <Title title = "View All Listings"/>
     <div className='divDisplay'>
     {/* {handleSubmit} */}
 
     {loading && <div>A moment please...</div>}
-    <h3 className="success">{success ? <p>Units loaded ! </p> : <p>not able to fetch data </p> }</h3>
+    <h3 className="success">{success ? <p>Listings loaded ! </p> : <p>not able to fetch data </p> }</h3>
 
     <ul>
         {data &&
-          data.map(({ id, _id, capacity, address, unitType }) => (
+          data.map(({ id, _id, title, address, description, dateStart, dateEnd, listingStatus, unitId }) => (
 
-            <Link to={{ pathname:`/view-a-unit/${id || _id}`}}>
+            <Link to={{ pathname:`/view-a-listing/${id || _id}`}}>
                   <>
                   <li className='list' key = {id || _id}  >
-                    <h3>Capacity : {capacity}</h3>
+                    <h3>Title : {title}</h3>
                     <h3>Address : {address}</h3>
-                    <h3>Unit type : {unitType}</h3>
+                    <h3>Description: {description}</h3>
+                    <h3>Start date: {dateStart}</h3>
+                    <h3>End date: {dateEnd}</h3>
+                    <h3>Listing Status : {listingStatus}</h3>
                   </li>
                   </>
             </Link>
@@ -62,4 +66,4 @@ return(
 
 };
 
-export default ViewMyUnits;
+export default Viewlistings;

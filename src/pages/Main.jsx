@@ -11,6 +11,8 @@ import Account from './Account';
 import ViewAUnit from './Units/ViewAUnit';
 import UpdateUnit from './Units/UpdateUnit';
 
+import ViewListings from './Listings/ViewListings';
+
 const Main = () => {
   return (
     <Routes> 
@@ -23,6 +25,7 @@ const Main = () => {
       <Route exact path='/account' element={<Account/>}></Route>
       <Route exact path='/view-a-unit/:id' element={<ViewAUnit/>}></Route>
       <Route exact path='/update-unit/:id' element={<UpdateUnit/>}></Route>
+      <Route exact path='/view-listings' element={<ViewListings/>}></Route>
 
     </Routes>
   );
