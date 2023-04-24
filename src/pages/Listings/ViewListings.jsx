@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import unitService from '../../service/unit.service';
 import listingService from '../../service/listing.service';
+import ListingComponents from './ListingComponents';
 
 const Viewlistings = () => {
 
@@ -41,22 +42,7 @@ return(
     {loading && <div>A moment please...</div>}
     <h3 className="success">{success ? <p>Listings loaded ! </p> : <p>not able to fetch data </p> }</h3>
 
-    <ul>
-        {data &&
-          data.map( l => (
-
-            <Link to={{ pathname:`/view-a-listing/${l.id || l._id}`}}>
-                  <>
-                  <li className='list' key = {l.id ||l. _id}  >
-                    <h3>Title : {l.title}</h3>
-                    <h3>Address : {l.address}</h3>
-                    <h3>Start date: {l.dateStart}</h3>
-                    <h3>End date: {l.dateEnd}</h3>
-                  </li>
-                  </>
-            </Link>
-          ))}
-      </ul>
+    <ListingComponents.ViewListings listings={data}></ListingComponents.ViewListings>
     </div>
     </>
  
