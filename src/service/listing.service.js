@@ -39,6 +39,13 @@ const updateListing = (id, capacity, address, unitType) => {
 
 };
 
+const changeStatusListing =(id) =>{
+
+  return axios.put(API_URL + '/' + id +'/changeStatus',  { headers: authHeader() })
+
+
+};
+
 const deleteListing = (id) => {
   return axios.delete(API_URL + '/' + id, { headers: authHeader() })
 };
@@ -52,6 +59,7 @@ const listingService = {
   getListingById,
   updateListing,
   deleteListing,
+  changeStatusListing
 };
 
 export default listingService;

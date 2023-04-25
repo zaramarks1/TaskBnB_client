@@ -87,7 +87,7 @@ const ViewAUnit = () =>{
             <ListingComponents.ViewListings listings={listings} owner={true}></ListingComponents.ViewListings>
 
 
-            <Link to= {`/view-a-unit/${params.id}/update`} state= {{unit :data}}>
+            <Link to= {`update`} state= {{unit :data}}>
               <button> Edit This Unit</button>
             </Link>
             

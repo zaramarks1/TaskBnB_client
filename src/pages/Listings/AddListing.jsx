@@ -6,6 +6,7 @@ import Title from '../Title';
 
 import unitService from '../../service/unit.service';
 import listingService from '../../service/listing.service';
+import ListingComponents from './ListingComponents';
 
 const AddListing = () =>{
 
@@ -48,57 +49,58 @@ const AddListing = () =>{
     };
   
     return (
-     <>
+    <>
      <Title title="Add a Listing" />
-        <form onSubmit={handleSubmit}>
-        <div className="divDisplay">
-          <label className='inputLabel'>Title </label>
-          <input
-            type="text"
-            value={listing.title}
-            placeholder="Title"
-            onChange={(e) => setListing({...listing, title:e.target.value})}
-          />
-          <label className='inputLabel'>Description</label>
-          <input
-            type="text"
-            value={listing.description}
-            placeholder="Description"
-            onChange={(e) => setListing({...listing, description:e.target.value})}
-          />
+     {/* <ListingComponents.FormListing listing={listing}> </ListingComponents.FormListing> */}
 
-          <label className='inputLabel'>Start Date</label>
-          <input
-            type="date"
-            value={listing.dateStart}
-            placeholder="Start Date"
-            onChange={(e) => setListing({...listing, dateStart:e.target.value})}
-          />
-          <label className='inputLabel'>End Date</label>
-          <input
-            type="date"
-            value={listing.dateEnd}
-            placeholder="End Date"
-            onChange={(e) => setListing({...listing, dateEnd:e.target.value})}
-          />
-          <label className='inputLabel'>Listing Status</label>
+      <form onSubmit={handleSubmit}>
+      <div className="divDisplay">
+      <label className='inputLabel'>Title</label>
+      <input
+        type="text"
+        value={listing.title}
+        placeholder="Title"
+        onChange={(e) => setListing({...listing, title:e.target.value})}
+      />
+      <label className='inputLabel'>Description</label>
+      <input
+        type="text"
+        value={listing.description}
+        placeholder="Description"
+        onChange={(e) => setListing({...listing, description:e.target.value})}
+      />
 
-          <select  type="text" id="unitType"  onChange={(e) => setListing({listingStatus:e.target.value})}>
-              <option selected value="HIDDEN">Hidden</option>
-              <option value="PUBLIC">Public</option>
-          </select>
-        <h3 className="error">{message ? <p>{message}</p> : null}</h3>
-        <h3 className="success">{success ? <p>Listing was created ! </p> : null}</h3>
-  
-        <button type="submit">Create</button>
-        </div>
-        </form>
-  
+      <label className='inputLabel'>Start Date</label>
+      <input
+        type="date"
+        value={listing.dateStart}
+        placeholder="Start Date"
+        onChange={(e) => setListing({...listing, dateStart:e.target.value})}
+      />
+      <label className='inputLabel'>End Date</label>
+      <input
+        type="date"
+        value={listing.dateEnd}
+        placeholder="End Date"
+        onChange={(e) => setListing({...listing, dateEnd:e.target.value})}
+      />
+      <label className='inputLabel'>Listing Status</label>
 
+      <select  type="text" id="unitType"  onChange={(e) => setListing({listingStatus:e.target.value})}>
+          <option selected value="HIDDEN">Hidden</option>
+          <option value="PUBLIC">Public</option>
+      </select>
 
+     <h3 className="error">{message ? <p>{message}</p> : null}</h3>
+     <h3 className="success">{success ? <p>Listing was created ! </p> : null}</h3>
+     <button type="submit">Create</button>
+
+     </div>
+    </form>
     </>
     );
-  }
+  };
+  
   
   export default AddListing;
   
