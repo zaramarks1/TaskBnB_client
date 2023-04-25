@@ -87,13 +87,13 @@ const ViewAUnit = () =>{
             <ListingComponents.ViewListings listings={listings} owner={true}></ListingComponents.ViewListings>
 
 
-            <Link to= {`/update-unit/${params.id}`} state= {{unit :data}}>
+            <Link to= {`/view-a-unit/${params.id}/update`} state= {{unit :data}}>
               <button> Edit This Unit</button>
             </Link>
             
             <button onClick={handleDelete}> Delete This Unit </button>
 
-            <Link to= {`/add-listing`} state= {{unit :data}}>
+            <Link to= {`add-listing`} state= {{unit :data}}>
               <button> Add a Listing </button>
             </Link>
 

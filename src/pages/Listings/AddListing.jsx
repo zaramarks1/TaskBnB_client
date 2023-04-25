@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../css/pages.css';
 import {useState, useEffect} from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import Title from '../Title';
 
 import unitService from '../../service/unit.service';
@@ -8,19 +9,24 @@ import listingService from '../../service/listing.service';
 
 const AddListing = () =>{
 
+    const params = useParams();
+    const location = useLocation();
+    const unit = location.state?.unit
+
     const [listing, setListing] = useState({
         title: '',
-        address: '',
+        address: unit?.address,
         description: '',
         dateStart: '',
         dateEnd: '',
-        listingStatus: ''
+        listingStatus: '',
+        unitId: params.id
       });
 
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
 
-
+    console.log(listing)
     let handleSubmit = async (e) => {
       setMessage("");
       e.preventDefault();
@@ -37,15 +43,15 @@ const AddListing = () =>{
         });
       }catch (error){
         console.log(error);
-        setMessage(error.response.data.message);
+        // setMessage(error.response.data.message);
       }
     };
   
     return (
      <>
-     <Title title="Add a Lisating" />
-      <div className="divDisplay">
+     <Title title="Add a Listing" />
         <form onSubmit={handleSubmit}>
+        <div className="divDisplay">
           <label className='inputLabel'>Title </label>
           <input
             type="text"
@@ -53,34 +59,48 @@ const AddListing = () =>{
             placeholder="Title"
             onChange={(e) => setListing({...listing, title:e.target.value})}
           />
-          <label className='inputLabel'>Address</label>
+          <label className='inputLabel'>Description</label>
           <input
             type="text"
-            value={address}
-            placeholder="Address"
-            onChange={(e) => setAddress(e.target.value)}
+            value={listing.description}
+            placeholder="Description"
+            onChange={(e) => setListing({...listing, description:e.target.value})}
           />
-          <label className='inputLabel'>Unit Type</label>
 
-          <select  type="text" id="unitType"  onChange={(e) => setUnitType(e.target.value)}>
-              <option selected value="HOUSE">House</option>
-              <option value="APT">Appartment</option>
-              <option value="STUDIO">Studio</option>
-              <option value="ROOM">Room</option>
+          <label className='inputLabel'>Start Date</label>
+          <input
+            type="date"
+            value={listing.dateStart}
+            placeholder="Start Date"
+            onChange={(e) => setListing({...listing, dateStart:e.target.value})}
+          />
+          <label className='inputLabel'>End Date</label>
+          <input
+            type="date"
+            value={listing.dateEnd}
+            placeholder="End Date"
+            onChange={(e) => setListing({...listing, dateEnd:e.target.value})}
+          />
+          <label className='inputLabel'>Listing Status</label>
+
+          <select  type="text" id="unitType"  onChange={(e) => setListing({listingStatus:e.target.value})}>
+              <option selected value="HIDDEN">Hidden</option>
+              <option value="PUBLIC">Public</option>
           </select>
         <h3 className="error">{message ? <p>{message}</p> : null}</h3>
-        <h3 className="success">{success ? <p>Unit was created ! </p> : null}</h3>
+        <h3 className="success">{success ? <p>Listing was created ! </p> : null}</h3>
   
         <button type="submit">Create</button>
+        </div>
         </form>
   
-      </div>
+
 
     </>
     );
   }
   
-  export default AddUnit;
+  export default AddListing;
   
   
   

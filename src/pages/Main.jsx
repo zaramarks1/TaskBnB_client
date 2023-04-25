@@ -12,6 +12,7 @@ import ViewAUnit from './Units/ViewAUnit';
 import UpdateUnit from './Units/UpdateUnit';
 import ViewAListing from './Listings/ViewAListing';
 import ViewListings from './Listings/ViewListings';
+import AddListing from './Listings/AddListing';
 
 const Main = () => {
   return (
@@ -24,7 +25,8 @@ const Main = () => {
       <Route exact path='/my-units' element={<ViewMyUnits/>}></Route>
       <Route exact path='/account' element={<Account/>}></Route>
       <Route exact path='/view-a-unit/:id' element={<ViewAUnit/>}></Route>
-      <Route exact path='/update-unit/:id' element={<UpdateUnit/>}></Route>
+      <Route exact path='/view-a-unit/:id/update' element={<UpdateUnit/>}></Route>
+      <Route exact path='/view-a-unit/:id/add-listing' element={<AddListing/>}></Route>
       <Route exact path='/view-listings' element={<ViewListings/>}></Route>
       <Route exact path='/view-a-listing/:id' element={<ViewAListing/>}></Route>
 

@@ -19,9 +19,13 @@ const getMyListings = () => {
 const addListing = (listing) => {
 
   return axios.post(API_URL,{
-        capacity: listing.capacity,
         address: listing.address,
-        unitType: listing.unitType
+        unitType: listing.unitType,
+        title: listing.title,
+        dateStart: listing.dateStart,
+        dateEnd: listing.dateEnd,
+        listingStatus: listing.listingStatus,
+        unitId: listing.unitId
 },  { headers: authHeader() })
 };
 
