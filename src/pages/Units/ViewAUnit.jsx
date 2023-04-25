@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import Title from '../Title';
 import unitService from '../../service/unit.service';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import ListingComponents from '../Listings/ListingComponents';
 
 
 
@@ -17,12 +18,28 @@ const ViewAUnit = () =>{
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
+    const [listings, setListings] = useState([]);
 
     useEffect(() => {
       unitService.getUnitById(params.id).then(
         (response) => {
           setData(response.data);
           console.log(data)
+          setSuccess(true);
+          setLoading(false);
+        },
+        (error) => {
+          setMessage(error.response.data.message);
+          setData(null);
+          setLoading(false);
+        }
+      );
+    }, []);
+
+    useEffect(() => {
+      unitService.getAllListingsByUnit(params.id).then(
+        (response) => {
+          setListings(response.data);
           setSuccess(true);
           setLoading(false);
         },
@@ -63,18 +80,23 @@ const ViewAUnit = () =>{
         
         {data &&
         <>
-            <h1>Capacity : {data.capacity}</h1>
-            <h1>Address : {data.address}</h1>
-            <h1>Unit type : {data.unitType}</h1>
+            <h2>Capacity : {data.capacity}</h2>
+            <h2>Address : {data.address}</h2>
+            <h2>Unit type : {data.unitType}</h2>
+            <h2>Listings: </h2>
+            <ListingComponents.ViewListings listings={listings} owner={true}></ListingComponents.ViewListings>
 
 
             <Link to= {`/update-unit/${params.id}`} state= {{unit :data}}>
-              <button> Edit </button>
+              <button> Edit This Unit</button>
             </Link>
             
-            <button onClick={handleDelete}> Delete </button>
-            <button> View Listings (not working yet heheh) </button>
-            <button> Add a Listing (not working yet heheh)</button>
+            <button onClick={handleDelete}> Delete This Unit </button>
+
+            <Link to= {`/add-listing`} state= {{unit :data}}>
+              <button> Add a Listing </button>
+            </Link>
+
         </>}
 
         <h3 className="error">{message ? <p>{message}</p> : null}</h3>

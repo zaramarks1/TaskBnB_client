@@ -1,6 +1,6 @@
 import { Link} from 'react-router-dom';
 
-const ListingEdit = ({listing}) =>{
+const EditListing = ({listing}) =>{
 
     return(
         <>
@@ -15,7 +15,11 @@ const ListingEdit = ({listing}) =>{
     
 };
 
-const ViewListings = ({listings}) =>{
+const FormListing = ({listing}) =>{
+
+}
+
+const ViewListings = ({listings, owner=false}) =>{
     return(
         <>
         <ul>
@@ -29,6 +33,8 @@ const ViewListings = ({listings}) =>{
                         <h3>Address : {l.address}</h3>
                         <h3>Start date: {l.dateStart}</h3>
                         <h3>End date: {l.dateEnd}</h3>
+                        {owner && <h3>Status : {l.listingStatus}</h3>}
+
                     </li>
                     </>
                 </Link>
@@ -40,8 +46,10 @@ const ViewListings = ({listings}) =>{
    
 };
 
+// const 
+
 const ListingComponents = {
-    ListingEdit,
+    EditListing,
     ViewListings
 };
 

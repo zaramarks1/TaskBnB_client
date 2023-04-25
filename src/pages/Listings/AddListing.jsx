@@ -4,14 +4,18 @@ import {useState, useEffect} from 'react';
 import Title from '../Title';
 
 import unitService from '../../service/unit.service';
+import listingService from '../../service/listing.service';
 
-const AddUnit = () =>{
+const AddListing = () =>{
 
-  const [unit, setUnit] = useState({
-      capacity: '',
-      address: '',
-      unitType:''
-  });
+    const [listing, setListing] = useState({
+        title: '',
+        address: '',
+        description: '',
+        dateStart: '',
+        dateEnd: '',
+        listingStatus: ''
+      });
 
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
@@ -22,10 +26,10 @@ const AddUnit = () =>{
       e.preventDefault();
 
       try {
-        await unitService.addUnit(unit).then(
+        await listingService.addListing(listing).then(
         (response) => {
-          setUnit({capacity:'', address:'', unitType:''});
-          setSuccess(true);
+            setListing('');
+            setSuccess(true);
         },
         (error) => {
           setMessage(error.response.data.message);
@@ -39,26 +43,26 @@ const AddUnit = () =>{
   
     return (
      <>
-     <Title title="Add a Unit" />
+     <Title title="Add a Lisating" />
       <div className="divDisplay">
         <form onSubmit={handleSubmit}>
-          <label className='inputLabel'>Capacity </label>
+          <label className='inputLabel'>Title </label>
           <input
-            type="number"
-            value={unit.capacity}
-            placeholder="Capacity"
-            onChange={(e) => setUnit({...unit, capacity:e.target.value})}
+            type="text"
+            value={listing.title}
+            placeholder="Title"
+            onChange={(e) => setListing({...listing, title:e.target.value})}
           />
           <label className='inputLabel'>Address</label>
           <input
             type="text"
-            value={unit.address}
+            value={address}
             placeholder="Address"
-            onChange={(e) => setUnit({...unit, address:e.target.value})}
+            onChange={(e) => setAddress(e.target.value)}
           />
           <label className='inputLabel'>Unit Type</label>
 
-          <select  type="text" id="unitType"  onChange={(e) => setUnit({...unit, unitType:e.target.value})}>
+          <select  type="text" id="unitType"  onChange={(e) => setUnitType(e.target.value)}>
               <option selected value="HOUSE">House</option>
               <option value="APT">Appartment</option>
               <option value="STUDIO">Studio</option>

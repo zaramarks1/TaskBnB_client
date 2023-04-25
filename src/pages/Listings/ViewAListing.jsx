@@ -45,7 +45,7 @@ const ViewAListing = () =>{
             <h2>End date: {data.dateEnd}</h2>
             <h2>Listing Status : {data.listingStatus}</h2>
           
-          <ListingComponents.ListingEdit listing={data}></ListingComponents.ListingEdit>
+          <ListingComponents.EditListing listing={data}></ListingComponents.EditListing>
         </>}
 
         <h3 className="error">{message ? <p>{message}</p> : null}</h3>

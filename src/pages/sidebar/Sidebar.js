@@ -66,6 +66,7 @@ const Sidebar = () => {
 
     const logOut = () => {
         authService.logout();
+        window.location.reload();
     };
 
 

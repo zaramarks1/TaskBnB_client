@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/pages.css';
 import {useState, useEffect} from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 
 import Title from '../Title';
@@ -11,12 +11,10 @@ import unitService from '../../service/unit.service';
 const UpdateUnit = () =>{
 
     const params = useParams();
-
+    const navigate = useNavigate();
     const location = useLocation();
+
     const unit = location.state?.unit;
-    console.log(location)
-    console.log(unit)
-    // console.log(props.location.state.data)
 
     const [capacity, setCapacity] = useState(unit?.capacity);
     const [address, setAddress] = useState(unit?.address);
@@ -32,6 +30,7 @@ const UpdateUnit = () =>{
         await unitService.updateUnit(params.id, capacity, address, unitType).then(
         (response) => {
           setSuccess(true);
+          navigate('/view-a-unit/'+params.id); 
         },
         (error) => {
           setMessage(error.response.data.message);

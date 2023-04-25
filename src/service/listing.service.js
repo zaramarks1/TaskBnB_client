@@ -16,12 +16,12 @@ const getMyListings = () => {
   return axios.get(API_URL + '/my', {headers: authHeader()});
 };
 
-const addListings = (capacity,address,unitType) => {
+const addListing = (listing) => {
 
   return axios.post(API_URL,{
-        capacity: capacity,
-        address: address,
-        unitType: unitType
+        capacity: listing.capacity,
+        address: listing.address,
+        unitType: listing.unitType
 },  { headers: authHeader() })
 };
 
@@ -43,7 +43,7 @@ const deleteListing = (id) => {
 
 const listingService = {
   getAllListings,
-  addListings,
+  addListing,
   getMyListings,
   getListingById,
   updateListing,
