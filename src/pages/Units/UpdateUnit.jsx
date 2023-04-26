@@ -33,7 +33,7 @@ const UpdateUnit = () =>{
           navigate('/view-a-unit/'+params.id); 
         },
         (error) => {
-          setMessage(error.response.data.message);
+          setMessage(error.response.data.message );
           console.log("error");
         });
       }catch (error){

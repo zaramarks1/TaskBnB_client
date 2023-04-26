@@ -28,8 +28,8 @@ const AddUnit = () =>{
           setSuccess(true);
         },
         (error) => {
-          setMessage(error.response.data.message);
-          console.log("error");
+          setMessage(error.response.data.message || error.message);
+          console.log(error);
         });
       }catch (error){
         console.log(error);

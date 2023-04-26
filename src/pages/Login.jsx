@@ -22,11 +22,15 @@ const Login = () => {
         },
         (error) => {
           console.log(error);
-          setMessage(error.response.data.message);
+          // setMessage(error.response.data.message);
+          setMessage(error.message)
+          // console.log(message);
+          // console.log(error.message);
         }
       );
     } catch (err) {
-      console.log(err);
+
+
     }
   };
 
@@ -65,6 +69,7 @@ const Login = () => {
       </form>
       <h3 className="error">{message ? <p>{message}</p> : null}</h3>
     </div>
+  
 
     </>
   );
