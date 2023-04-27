@@ -25,7 +25,7 @@ const Viewlistings = () => {
           setLoading(false);
         },
         (error) => {
-          setMessage(error.response.data.message);
+          setMessage(error.response.data.message || error.message);
           setData(null);
           setLoading(false);
         }

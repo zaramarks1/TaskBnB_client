@@ -86,7 +86,7 @@ const AddListing = () =>{
       />
       <label className='inputLabel'>Listing Status</label>
 
-      <select  type="text" id="unitType"  onChange={(e) => setListing({listingStatus:e.target.value})}>
+      <select  type="text" id="unitType"  onChange={(e) => setListing({...listing,listingStatus:e.target.value})}>
           <option selected value="HIDDEN">Hidden</option>
           <option value="PUBLIC">Public</option>
       </select>

@@ -97,10 +97,11 @@ const DeleteListing = ({id}) =>{
     
 // }
 
-const ViewListings = ({listings, owner=false}) =>{
+const ViewListings = ({listings, isOwner=false}) =>{
 
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
+    // const [isOwner, setIsOwner] = useState(false);
 
     let handleChangeStatus = async (e, id) => {
         setMessage("");
@@ -113,9 +114,9 @@ const ViewListings = ({listings, owner=false}) =>{
             window.location.reload();
           },
           (error) => {
-            setMessage(error.response.data.message);
+            setMessage(error.response.data.message || error.message);
             console.log("error");
-            alert(message);
+            // alert(message);
           });
         }catch (error){
           console.log(error);
@@ -130,14 +131,15 @@ const ViewListings = ({listings, owner=false}) =>{
             listings.map( l => (
                     <>
                     <li className='list' key = {l.id ||l. _id}  >
-                    <Link to={{ pathname:`/view-a-listing/${l.id || l._id}`}}>
+                    <Link to={`/view-a-listing/${l.id || l._id}`} state={{isOwner:isOwner}}>
                         <h3>Title : {l.title}</h3>
                         <h3>Address : {l.address}</h3>
                         <h3>Start date: {l.dateStart}</h3>
                         <h3>End date: {l.dateEnd}</h3>
+                        {/* <h3>{isOwner}</h3> */}
                     </Link>
                         
-                        {owner && 
+                        {isOwner && 
                         <>
                         <h3>Status : {l.listingStatus}
 

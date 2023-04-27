@@ -3,7 +3,8 @@ import '../../css/pages.css';
 import {useState, useEffect} from 'react';
 import Title from '../Title';
 import unitService from '../../service/unit.service';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import authService from '../../service/auth.service';
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import ListingComponents from '../Listings/ListingComponents';
 
 
@@ -12,6 +13,7 @@ const ViewAUnit = () =>{
 
     const params = useParams();
     const navigate = useNavigate();
+    // const location = useLocation();
 
     const [success, setSuccess] = useState(false);
     const [data, setData] = useState();
@@ -19,17 +21,25 @@ const ViewAUnit = () =>{
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
     const [listings, setListings] = useState([]);
+    const [isOwner, setIsOwner] = useState(false);
+
 
     useEffect(() => {
+
+      const user = authService.getCurrentUser();
+      // console.log(user);
+      // const isOwner = location.state?.isOwner;
+
       unitService.getUnitById(params.id).then(
         (response) => {
           setData(response.data);
-          console.log(data)
           setSuccess(true);
           setLoading(false);
+          setIsOwner(user?.id === response.data.owner);
+          // console.log(isOwner);
         },
         (error) => {
-          setMessage(error.response.data.message);
+          setMessage(error.response.data.message || error.message);
           setData(null);
           setLoading(false);
         }
@@ -44,7 +54,7 @@ const ViewAUnit = () =>{
           setLoading(false);
         },
         (error) => {
-          setMessage(error.response.data.message);
+          setMessage(error.response.data.message || error.message);
           setData(null);
           setLoading(false);
         }
@@ -63,7 +73,7 @@ const ViewAUnit = () =>{
           alert('Unit was successfully deleted');
         },
         (error) => {
-          setMessage(error.response.data.message);
+          setMessage(error.response.data.message || error.message);
           console.log("error");
           alert(message);
         });
@@ -84,18 +94,22 @@ const ViewAUnit = () =>{
             <h2>Address : {data.address}</h2>
             <h2>Unit type : {data.unitType}</h2>
             <h2>Listings: </h2>
-            <ListingComponents.ViewListings listings={listings} owner={true}></ListingComponents.ViewListings>
+            <ListingComponents.ViewListings listings={listings} isOwner={isOwner}></ListingComponents.ViewListings>
 
-
-            <Link to= {`update`} state= {{unit :data}}>
-              <button> Edit This Unit</button>
-            </Link>
+            { isOwner && 
+              <>
+              <Link to= {`update`} state= {{unit :data}}>
+                <button> Edit This Unit</button>
+              </Link>
             
-            <button onClick={handleDelete}> Delete This Unit </button>
+              <button onClick={handleDelete}> Delete This Unit </button>
 
-            <Link to= {`add-listing`} state= {{unit :data}}>
-              <button> Add a Listing </button>
-            </Link>
+              <Link to= {`add-listing`} state= {{unit :data}}>
+                <button> Add a Listing </button>
+              </Link>
+              </>
+            }
+          
 
         </>}
 

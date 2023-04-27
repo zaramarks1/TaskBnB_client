@@ -40,8 +40,8 @@ const updateListing = (id, capacity, address, unitType) => {
 };
 
 const changeStatusListing =(id) =>{
-
-  return axios.put(API_URL + '/' + id +'/changeStatus',  { headers: authHeader() })
+  console.log(authHeader())
+  return axios.put(API_URL + '/' + id +'/changeStatus', {},{ headers: authHeader() })
 
 
 };

@@ -81,11 +81,11 @@ const Sidebar = () => {
         }
           <NavIcon to='/'>Home</NavIcon>
 
+          <NavIcon to='/view-listings'>View All Listings</NavIcon>
+
           {currentUser ? (
                 <>
                 <NavIcon to='/view-units'>View All Units</NavIcon>
-
-                <NavIcon to='/view-listings'>View All Listings</NavIcon>
 
                 <NavIcon onClick={logOut} >Logout</NavIcon>
                 </>
@@ -97,6 +97,7 @@ const Sidebar = () => {
                 <NavIcon to='/register' >Register</NavIcon>
                 </>
             )}
+           
        
 
         </Nav>
