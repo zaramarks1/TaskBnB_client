@@ -20,7 +20,7 @@ const addListing = (listing) => {
 
   return axios.post(API_URL,{
         address: listing.address,
-        unitType: listing.unitType,
+        description: listing.description,
         title: listing.title,
         dateStart: listing.dateStart,
         dateEnd: listing.dateEnd,
@@ -29,12 +29,14 @@ const addListing = (listing) => {
 },  { headers: authHeader() })
 };
 
-const updateListing = (id, capacity, address, unitType) => {
+const updateListing = (id, listing) => {
 
   return axios.put(API_URL + '/' + id ,{
-    capacity: capacity,
-    address: address,
-    unitType: unitType
+    address: listing.address,
+    description: listing.description,
+    title: listing.title,
+    dateStart: listing.dateStart,
+    dateEnd: listing.dateEnd
 },  { headers: authHeader() })
 
 };

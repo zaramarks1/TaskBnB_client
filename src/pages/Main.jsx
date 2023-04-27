@@ -13,6 +13,7 @@ import UpdateUnit from './Units/UpdateUnit';
 import ViewAListing from './Listings/ViewAListing';
 import ViewListings from './Listings/ViewListings';
 import AddListing from './Listings/AddListing';
+import UpdateListing from './Listings/UpdateListing';
 
 const Main = () => {
   return (
@@ -29,6 +30,7 @@ const Main = () => {
       <Route exact path='/view-a-unit/:id/add-listing' element={<AddListing/>}></Route>
       <Route exact path='/view-listings' element={<ViewListings/>}></Route>
       <Route exact path='/view-a-listing/:id' element={<ViewAListing/>}></Route>
+      <Route exact path='/view-a-listing/:id/update' element={<UpdateListing/>}></Route>
 
     </Routes>
   );

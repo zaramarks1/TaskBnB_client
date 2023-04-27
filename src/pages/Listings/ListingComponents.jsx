@@ -6,7 +6,7 @@ const EditListing = ({listing}) =>{
 
     return(
         <>
-        <Link to= {`/listing/${listing.id || listing._id}/update`} state= {{listing :listing}}>
+        <Link to= {`/view-a-listing/${listing.id || listing._id}/update`} state= {{listing :listing}}>
             <button> Edit </button>
         </Link>
   
