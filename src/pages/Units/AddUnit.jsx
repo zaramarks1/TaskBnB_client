@@ -8,9 +8,9 @@ import unitService from '../../service/unit.service';
 const AddUnit = () =>{
 
   const [unit, setUnit] = useState({
-      capacity: '',
+      capacity: 0,
       address: '',
-      unitType:''
+      unitType:'HOUSE'
   });
 
     const [message, setMessage] = useState("");
@@ -50,7 +50,7 @@ const AddUnit = () =>{
             onChange={(e) => setUnit({...unit, capacity:e.target.value})}
           />
           <label className='inputLabel'>Address</label>
-          <input
+          <input required
             type="text"
             value={unit.address}
             placeholder="Address"

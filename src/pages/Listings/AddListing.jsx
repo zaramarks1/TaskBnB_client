@@ -20,7 +20,7 @@ const AddListing = () =>{
         description: '',
         dateStart: '',
         dateEnd: '',
-        listingStatus: '',
+        listingStatus: 'HIDDEN',
         unitId: params.id
       });
 
@@ -56,7 +56,7 @@ const AddListing = () =>{
       <form onSubmit={handleSubmit}>
       <div className="divDisplay">
       <label className='inputLabel'>Title</label>
-      <input
+      <input required
         type="text"
         value={listing.title}
         placeholder="Title"
@@ -71,14 +71,14 @@ const AddListing = () =>{
       />
 
       <label className='inputLabel'>Start Date</label>
-      <input
+      <input required
         type="date"
         value={listing.dateStart}
         placeholder="Start Date"
         onChange={(e) => setListing({...listing, dateStart:e.target.value})}
       />
       <label className='inputLabel'>End Date</label>
-      <input
+      <input required
         type="date"
         value={listing.dateEnd}
         placeholder="End Date"
