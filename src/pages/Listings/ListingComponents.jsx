@@ -48,54 +48,58 @@ const DeleteListing = ({id}) =>{
     
 };
 
-// const FormListing = ({listing}) =>{
-//     return(
-//     <>
-// <form onSubmit={handleSubmit}>
-//     <div className="divDisplay">
-//       <label className='inputLabel'>Title</label>
-//       <input
-//         type="text"
-//         value={listing.title}
-//         placeholder="Title"
-//         onChange={(e) => setListing({...listing, title:e.target.value})}
-//       />
-//       <label className='inputLabel'>Description</label>
-//       <input
-//         type="text"
-//         value={listing.description}
-//         placeholder="Description"
-//         onChange={(e) => setListing({...listing, description:e.target.value})}
-//       />
+const FormListing = ({handleSubmit, listing, setListing, buttonName, type}) =>{
+    return(
+    <>
+  <form onSubmit={handleSubmit}>
+      <div className="divDisplay">
+      <label className='inputLabel'>Title</label>
+      <input required
+        type="text"
+        value={listing.title}
+        placeholder="Title"
+        onChange={(e) => setListing({...listing, title:e.target.value})}
+      />
+      <label className='inputLabel'>Description</label>
+      <input
+        type="text"
+        value={listing.description}
+        placeholder="Description"
+        onChange={(e) => setListing({...listing, description:e.target.value})}
+      />
 
-//       <label className='inputLabel'>Start Date</label>
-//       <input
-//         type="date"
-//         value={listing.dateStart}
-//         placeholder="Start Date"
-//         onChange={(e) => setListing({...listing, dateStart:e.target.value})}
-//       />
-//       <label className='inputLabel'>End Date</label>
-//       <input
-//         type="date"
-//         value={listing.dateEnd}
-//         placeholder="End Date"
-//         onChange={(e) => setListing({...listing, dateEnd:e.target.value})}
-//       />
-//       <label className='inputLabel'>Listing Status</label>
+      <label className='inputLabel'>Start Date</label>
+      <input required
+        type="date"
+        value={listing.dateStart}
+        placeholder="Start Date"
+        onChange={(e) => setListing({...listing, dateStart:e.target.value})}
+      />
+      <label className='inputLabel'>End Date</label>
+      <input required
+        type="date"
+        value={listing.dateEnd}
+        placeholder="End Date"
+        onChange={(e) => setListing({...listing, dateEnd:e.target.value})}
+      />
+    {type === 'CREATE' &&
+      <>
+         <label className='inputLabel'>Listing Status</label>
 
-//       <select  type="text" id="unitType"  onChange={(e) => setListing({listingStatus:e.target.value})}>
-//           <option selected value="HIDDEN">Hidden</option>
-//           <option value="PUBLIC">Public</option>
-//       </select>
-   
-//     <button type="submit">Create</button>
-//     </div>
-//     </form>
-//     </>
-//     );
+          <select  type="text" id="unitType"  onChange={(e) => setListing({...listing,listingStatus:e.target.value})}>
+              <option selected value="HIDDEN">Hidden</option>
+              <option value="PUBLIC">Public</option>
+          </select>
+
+      </>
+    }
+     <button type="submit">{buttonName}</button>
+     </div>
+  </form>
+    </>
+    );
     
-// }
+}
 
 const ViewListings = ({listings, isOwner=false}) =>{
 
@@ -172,7 +176,7 @@ const ViewListings = ({listings, isOwner=false}) =>{
 const ListingComponents = {
     EditListing,
     ViewListings,
-    // FormListing
+    FormListing
 };
 
 

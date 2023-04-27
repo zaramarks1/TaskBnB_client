@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
@@ -55,6 +55,7 @@ const Sidebar = () => {
   const showSidebar = () => setSidebar(!sidebar);
 
   const [currentUser, setCurrentUser] = useState(undefined);
+  const navigate = useNavigate();
 
     useEffect(() => {
         const user = authService.getCurrentUser();
@@ -66,6 +67,7 @@ const Sidebar = () => {
 
     const logOut = () => {
         authService.logout();
+        navigate('/'); 
         window.location.reload();
     };
 
@@ -85,7 +87,7 @@ const Sidebar = () => {
 
           {currentUser ? (
                 <>
-                <NavIcon to='/view-units'>View All Units</NavIcon>
+                {/* <NavIcon to='/view-units'>View All Units</NavIcon> */}
 
                 <NavIcon onClick={logOut} >Logout</NavIcon>
                 </>

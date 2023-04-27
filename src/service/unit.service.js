@@ -29,12 +29,12 @@ const addUnit = (unit) => {
 },  { headers: authHeader() })
 };
 
-const updateUnit = (id, capacity, address, unitType) => {
+const updateUnit = (id,unit) => {
 
   return axios.put(API_URL + '/' + id ,{
-    capacity: capacity,
-    address: address,
-    unitType: unitType
+    capacity: unit.capacity,
+    address: unit.address,
+    unitType: unit.unitType
 },  { headers: authHeader() })
 
 };

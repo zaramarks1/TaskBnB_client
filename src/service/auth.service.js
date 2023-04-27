@@ -31,7 +31,7 @@ const login = (email, password) => {
         localStorage.setItem("user", JSON.stringify(response.data));
         window.location.reload();
       }
-
+      console.log(response)
       return response.data;
     });
 };

@@ -25,15 +25,16 @@ const UpdateListing = () =>{
         listingStatus:listingOld?.listingStatus,
         unitId: listingOld?.unitId
       });
-      console.log(listing);
+     
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
 
     let handleSubmit = async (e) => {
       setMessage("");
       e.preventDefault();
-
+      console.log(listing);
       try {
+       
         await listingService.updateListing(params.id, listing).then(
         (response) => {
             setListing('');
@@ -51,46 +52,17 @@ const UpdateListing = () =>{
   
     return (
     <>
-     <Title title="Add a Listing" />
-     {/* <ListingComponents.FormListing listing={listing}> </ListingComponents.FormListing> */}
+     <Title title="Edit Listing" />
 
-      <form onSubmit={handleSubmit}>
-      <div className="divDisplay">
-      <label className='inputLabel'>Title</label>
-      <input required
-        type="text"
-        value={listing.title}
-        placeholder="Title"
-        onChange={(e) => setListing({...listing, title:e.target.value})}
-      />
-      <label className='inputLabel'>Description</label>
-      <input
-        type="text"
-        value={listing.description}
-        placeholder="Description"
-        onChange={(e) => setListing({...listing, description:e.target.value})}
-      />
-
-      <label className='inputLabel'>Start Date</label>
-      <input required
-        type="date"
-        value={listing.dateStart}
-        placeholder="Start Date"
-        onChange={(e) => setListing({...listing, dateStart:e.target.value})}
-      />
-      <label className='inputLabel'>End Date</label>
-      <input required
-        type="date"
-        value={listing.dateEnd}
-        placeholder="End Date"
-        onChange={(e) => setListing({...listing, dateEnd:e.target.value})}
-      />
-
+     <ListingComponents.FormListing 
+     listing={listing} 
+     handleSubmit={handleSubmit} 
+     setListing={setListing} 
+     buttonName='Edit'
+     type='EDIT'
+     > </ListingComponents.FormListing>
+     
      <h3 className="error">{message ? <p>{message}</p> : null}</h3>
-     <button type="submit">Update</button>
-
-     </div>
-    </form>
     </>
     );
   };

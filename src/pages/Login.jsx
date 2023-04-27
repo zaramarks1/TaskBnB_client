@@ -22,14 +22,10 @@ const Login = () => {
         },
         (error) => {
           console.log(error);
-          // setMessage(error.response.data.message);
-          setMessage(error.message)
-          // console.log(message);
-          // console.log(error.message);
+          setMessage(error.response.data.message  || error.message)
         }
       );
     } catch (err) {
-
 
     }
   };

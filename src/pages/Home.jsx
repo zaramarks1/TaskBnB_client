@@ -28,6 +28,8 @@ const Home = () => {
         <h1>You are not logged in!</h1>
       )}
 
+      <img src="../../logo1.png"></img>
+
       </div>
 
     

@@ -36,7 +36,8 @@ const updateListing = (id, listing) => {
     description: listing.description,
     title: listing.title,
     dateStart: listing.dateStart,
-    dateEnd: listing.dateEnd
+    dateEnd: listing.dateEnd,
+    unitId:listing?.unitId
 },  { headers: authHeader() })
 
 };

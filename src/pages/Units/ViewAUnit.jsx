@@ -27,16 +27,14 @@ const ViewAUnit = () =>{
     useEffect(() => {
 
       const user = authService.getCurrentUser();
-      // console.log(user);
       // const isOwner = location.state?.isOwner;
-
+      console.log(user)
       unitService.getUnitById(params.id).then(
         (response) => {
           setData(response.data);
           setSuccess(true);
           setLoading(false);
-          setIsOwner(user?.id === response.data.owner);
-          // console.log(isOwner);
+          setIsOwner(user?.id == response.data.ownerId);
         },
         (error) => {
           setMessage(error.response.data.message || error.message);
@@ -90,12 +88,6 @@ const ViewAUnit = () =>{
         
         {data &&
         <>
-            <h2>Capacity : {data.capacity}</h2>
-            <h2>Address : {data.address}</h2>
-            <h2>Unit type : {data.unitType}</h2>
-            <h2>Listings: </h2>
-            <ListingComponents.ViewListings listings={listings} isOwner={isOwner}></ListingComponents.ViewListings>
-
             { isOwner && 
               <>
               <Link to= {`update`} state= {{unit :data}}>
@@ -109,8 +101,11 @@ const ViewAUnit = () =>{
               </Link>
               </>
             }
-          
-
+            <h2>Capacity : {data.capacity}</h2>
+            <h2>Address : {data.address}</h2>
+            <h2>Unit type : {data.unitType}</h2>
+            <h2>Listings: </h2>
+            <ListingComponents.ViewListings listings={listings} isOwner={isOwner}></ListingComponents.ViewListings>
         </>}
 
         <h3 className="error">{message ? <p>{message}</p> : null}</h3>
