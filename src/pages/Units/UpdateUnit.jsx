@@ -5,6 +5,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Title from '../Title';
 import unitService from '../../service/unit.service';
 import UnitComponents from './UnitComponents';
+import authService from '../../service/auth.service';
 
 
 const UpdateUnit = () =>{
@@ -14,8 +15,26 @@ const UpdateUnit = () =>{
     const location = useLocation();
 
     const [unit, setUnit] = useState(location.state?.unit);
-
     const [message, setMessage] = useState("");
+
+    // useEffect(() => {
+
+    //   const user = authService.getCurrentUser();
+    //   unitService.getUnitById(params.id).then(
+    //     (response) => {
+
+    //       if(user?.id !== response.data.ownerId){
+    //         setMessage('You are not allowed to edit this unit');
+    //       }else{
+    //         setUnit(response.data);
+    //       }
+    //     },
+    //     (error) => {
+    //       setMessage(error.response.data.message || error.message);
+    //     }
+    //   );
+    // }, []);
+
 
     let handleSubmit = async (e) => {
       setMessage("");

@@ -33,7 +33,7 @@ const ViewMyUnits = () => {
 return(
     <>
 
-    <Title title = "View All Units"/>
+    <Title title = "Your Units"/>
     <div className='divDisplay'>
     {/* {handleSubmit} */}
 

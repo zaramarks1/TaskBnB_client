@@ -20,8 +20,8 @@ const UpdateListing = () =>{
         title: listingOld?.title,
         address: listingOld?.address,
         description: listingOld?.description,
-        dateStart: new Date(listingOld?.dateStart).toISOString().substring(0, 10),
-        dateEnd: new Date(listingOld?.dateEnd).toISOString().substring(0, 10),
+        dateStart: new Date(listingOld?.dateStart || '2022-05-05').toISOString().substring(0, 10),
+        dateEnd: new Date(listingOld?.dateEnd|| '2022-05-05').toISOString().substring(0, 10),
         listingStatus:listingOld?.listingStatus,
         unitId: listingOld?.unitId
       });

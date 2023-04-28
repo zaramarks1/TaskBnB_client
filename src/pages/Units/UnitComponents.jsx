@@ -28,7 +28,7 @@ const UnitForm = ({handleSubmit, unit, setUnit, buttonName}) =>{
               <option value="STUDIO">Studio</option>
               <option value="ROOM">Room</option>
           </select>
-  
+        <br></br>
         <button type="submit">{buttonName}</button>
         </form>
   

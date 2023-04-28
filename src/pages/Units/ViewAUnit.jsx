@@ -28,7 +28,6 @@ const ViewAUnit = () =>{
 
       const user = authService.getCurrentUser();
       // const isOwner = location.state?.isOwner;
-      console.log(user)
       unitService.getUnitById(params.id).then(
         (response) => {
           setData(response.data);
@@ -83,7 +82,7 @@ const ViewAUnit = () =>{
     return (
         <>
 
-        <Title title = "Your Unit"></Title>
+        <Title title = "Unit"></Title>
 
         
         {data &&

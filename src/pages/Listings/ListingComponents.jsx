@@ -93,6 +93,7 @@ const FormListing = ({handleSubmit, listing, setListing, buttonName, type}) =>{
 
       </>
     }
+      <br></br>
      <button type="submit">{buttonName}</button>
      </div>
   </form>
@@ -128,50 +129,49 @@ const ViewListings = ({listings, isOwner=false}) =>{
       };
 
       
-    return(
+      return (
         <>
-        <ul>
+          <ul>
             {listings &&
-            listings.map( l => (
+              listings.map(l => (
+                <>
+                  {(isOwner || l.listingStatus === "PUBLIC") && (
                     <>
-                    <li className='list' key = {l.id ||l. _id}  >
-                    <Link to={`/view-a-listing/${l.id || l._id}`} state={{isOwner:isOwner}}>
-                        <h3>Title : {l.title}</h3>
-                        <h3>Address : {l.address}</h3>
-                        <h3>Start date: {l.dateStart}</h3>
-                        <h3>End date: {l.dateEnd}</h3>
-                        {/* <h3>{isOwner}</h3> */}
-                    </Link>
-                        
-                        {isOwner && 
-                        <>
-                        <h3>Status : {l.listingStatus}
-
-                        {l.listingStatus == 'HIDDEN' &&
-                            <button onClick={(e) => handleChangeStatus(e, l.id || l._id)}>PUBLISH</button>
-                        }
-                        {l.listingStatus == 'PUBLIC' &&
-                             <button onClick={(e) => handleChangeStatus(e, l.id || l._id)}>HIDE</button>
-                        }
-                        {/* <button>EDIT</button>
-                         */}
-                         <EditListing listing={l}></EditListing>
-                         <DeleteListing id={l._id||l.id}></DeleteListing>
-                        </h3>
-                        </>
-                        }
-                    </li>
+                      <li className="list" key={l.id || l._id}>
+                        <Link to={`/view-a-listing/${l.id || l._id}`} state={{ isOwner: isOwner }}>
+                          <h3>Title : {l.title}</h3>
+                          <h3>Address : {l.address}</h3>
+                          <h3>Start date: {l.dateStart}</h3>
+                          <h3>End date: {l.dateEnd}</h3>
+                        </Link>
+                        {isOwner && (
+                          <>
+                            <h3>
+                              Status : {l.listingStatus}
+                              {l.listingStatus == "HIDDEN" && (
+                                <button onClick={(e) => handleChangeStatus(e, l.id || l._id)}>
+                                  PUBLISH
+                                </button>
+                              )}
+                              {l.listingStatus == "PUBLIC" && (
+                                <button onClick={(e) => handleChangeStatus(e, l.id || l._id)}>
+                                  HIDE
+                                </button>
+                              )}
+                              <EditListing listing={l}></EditListing>
+                              <DeleteListing id={l._id || l.id}></DeleteListing>
+                            </h3>
+                          </>
+                        )}
+                      </li>
                     </>
-          
-            ))}
-        </ul>
-
+                  )}
+                </>
+              ))}
+          </ul>
         </>
-    );
-   
-};
-
-// const 
+      );
+};      
 
 const ListingComponents = {
     EditListing,

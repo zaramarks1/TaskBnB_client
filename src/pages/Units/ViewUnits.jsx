@@ -28,27 +28,6 @@ const ViewUnits = () => {
         }
       );
     }, []);
-
-    // useEffect(() => {
-    //     const getData = async () => {
-    //       try {
-    //         const response = await axios.get(
-    //           `http://localhost:8080/api/v1/units`
-    //         );
-    //         setData(response.data);
-    //         setSuccess(true);
-    //         setMessage(null);
-    //       } catch (err) {
-    //         setMessage(err.message);
-    //         setData(null);
-    //       } finally {
-    //         setLoading(false);
-    //         setSuccess(true);
-    //       }
-    //     };
-    //     getData();
-    //   }, []);
-
   
 return(
     <>
@@ -68,7 +47,6 @@ return(
                 <h3>Address : {address}</h3>
                 <h3>Unit type : {unitType}</h3>
             </li>
- 
             
           ))}
       </ul>

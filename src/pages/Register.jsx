@@ -27,12 +27,10 @@ const Register = () => {
         },
         (error) => {
           console.log(error.message);
-          console.log("error");
           setMessage(error.response.data.message);
         }
       );
     } catch (err) {
-      console.log("ble");
       setMessage(err.message);
     }
   };
@@ -40,11 +38,9 @@ const Register = () => {
   return (
     <>
     <div className="authDiv">
-       {/* <Title title = "Sign Up"/> */}
        <h2>Sign Up!</h2>
       <form onSubmit={handleSignup}>
       <div className="txt_field">
-      {/* <label>First Name</label> */}
         <input
           type="text"
           placeholder="firstname"
