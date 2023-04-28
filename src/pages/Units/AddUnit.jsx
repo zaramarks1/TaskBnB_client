@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../css/pages.css';
 import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Title from '../Title';
 import UnitComponents from './UnitComponents';
 
@@ -16,6 +17,7 @@ const AddUnit = () =>{
 
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
 
     let handleSubmit = async (e) => {
@@ -27,6 +29,8 @@ const AddUnit = () =>{
         (response) => {
           setUnit({capacity:'', address:'', unitType:''});
           setSuccess(true);
+          navigate('/my-units')
+          
         },
         (error) => {
           setMessage(error.response.data.message || error.message);
