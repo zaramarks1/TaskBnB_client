@@ -37,8 +37,9 @@ const UpdateListing = () =>{
        
         await listingService.updateListing(params.id, listing).then(
         (response) => {
-            setListing('');
-            navigate('/view-a-unit/'+listing.unitId); 
+            // setListing('');
+            console.log(response.data)
+            navigate('/view-a-unit/'+ (response.data.unitId || response.data.unit.id)); 
             setSuccess(true);
         },
         (error) => {

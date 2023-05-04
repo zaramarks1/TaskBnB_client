@@ -196,6 +196,16 @@
     color: green;
     background-color: #9fe0af2a;
   }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #a892ea;
+    border-radius: 30px;
+    color:white;
+  }
   
   /* .index{
     padding: 20px;

@@ -24,7 +24,7 @@ const UnitForm = ({handleSubmit, unit, setUnit, buttonName}) =>{
 
           <select  type="text" id="unitType"  onChange={(e) => setUnit({...unit, unitType:e.target.value})}>
               <option selected value="HOUSE">House</option>
-              <option value="APT">Appartment</option>
+               <option value="APT">Appartment</option>
               <option value="STUDIO">Studio</option>
               <option value="ROOM">Room</option>
           </select>

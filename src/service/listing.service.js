@@ -9,11 +9,15 @@ const getAllListings = () => {
 
 const getListingById = (id) =>{
 
-  return axios.get(API_URL +'/' +id, {headers: authHeader()});
+  return axios.get(API_URL +'/' +id);
 };
 
 const getMyListings = () => {
   return axios.get(API_URL + '/my', {headers: authHeader()});
+};
+
+const getRequestsByListing = (id) => {
+  return axios.get(API_URL + '/'+id+'/requests', {headers: authHeader()});
 };
 
 const addListing = (listing) => {
@@ -62,7 +66,8 @@ const listingService = {
   getListingById,
   updateListing,
   deleteListing,
-  changeStatusListing
+  changeStatusListing,
+  getRequestsByListing
 };
 
 export default listingService;

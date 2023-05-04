@@ -106,6 +106,7 @@ const ViewListings = ({listings, isOwner=false}) =>{
 
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState(null);
+    const [listingErrorId, setListingErrorId] = useState(null);
     // const [isOwner, setIsOwner] = useState(false);
 
     let handleChangeStatus = async (e, id) => {
@@ -120,6 +121,7 @@ const ViewListings = ({listings, isOwner=false}) =>{
           },
           (error) => {
             setMessage(error.response.data.message || error.message);
+            setListingErrorId(id);
             console.log("error");
             // alert(message);
           });
@@ -143,6 +145,7 @@ const ViewListings = ({listings, isOwner=false}) =>{
                           <h3>Address : {l.address}</h3>
                           <h3>Start date: {l.dateStart}</h3>
                           <h3>End date: {l.dateEnd}</h3>
+                          
                         </Link>
                         {isOwner && (
                           <>
@@ -158,9 +161,12 @@ const ViewListings = ({listings, isOwner=false}) =>{
                                   HIDE
                                 </button>
                               )}
+                            
                               <EditListing listing={l}></EditListing>
                               <DeleteListing id={l._id || l.id}></DeleteListing>
+                              <h3 className="error">{message  && listingErrorId === (l.id || l._id)? <p>{message}</p> : null}</h3>
                             </h3>
+                            
                           </>
                         )}
                       </li>
