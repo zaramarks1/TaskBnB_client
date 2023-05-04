@@ -32,7 +32,6 @@ const ViewAListing = () =>{
           setSuccess(true);
 
           if(user?.id == response.data.unit.ownerId ){
-            console.log("KSDJFNAKJNGJKRSFNBGAKJ")
             listingService.getRequestsByListing(params.id).then(
               (response) => {
                 setRequests(response.data);
@@ -73,11 +72,11 @@ const ViewAListing = () =>{
             <h2>End date: {data.dateEnd}</h2>
             <h2>Listing Status : {data.listingStatus}</h2>
 
-            {isOwner && requests ? 
+            {isOwner ? 
               <>
                <h2>Requests : {requests.length} </h2>
               <ul>
-              {requests.map(request => (
+              { requests && requests.map(request => (
                   <>
                  
                   <li className='list' >
@@ -100,7 +99,10 @@ const ViewAListing = () =>{
               
             </>
             :
+            <>
             <h1>Is not owner</h1>
+            <button>Make a request</button>
+            </>
           }
           
           {/* <ListingComponents.EditListing listing={data}></ListingComponents.EditListing> */}
