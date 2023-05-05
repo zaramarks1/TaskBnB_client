@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import authHeader from "./auth.header";
 
 const API_URL = "http://localhost:8080/api/v1/auth";
 
@@ -10,7 +11,7 @@ const register = (firstname, lastname, email, password) => {
       lastname: lastname,
       email: email,
       password: password,
-    })
+    }, {headers: authHeader()})
     .then((response) => {
       if (response.data.token) {
         console.log(response.data.token);
@@ -49,6 +50,20 @@ const getCurrentUser = () => {
   };
   
   }
+
+  // Add a response interceptor to intercept error responses
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    // Modify error object to include a custom error message
+    if (error.response) {
+      if(error.response.status == '403') error.message = `Error ${error.response.status}: Not allowed`;
+      else error.message = `Error ${error.response.status}: ${error.response.data.message}`;
+    }
+
+    return Promise.reject(error);
+  }
+);
   
 
 const authService = {

@@ -149,8 +149,6 @@
     align-items: center;
     position:relative;
     display:block;
-    height: 500px;
-    /* background-color: #8C69F4; */
   }
   
   .title{
@@ -199,6 +197,15 @@
   .error{
     color: #b20606 ;
     background-color: #c308082a;
+    /* height: 30px; */
+    border-radius: 10px;
+    /* left:200px; */
+    margin-left: 25%;
+    margin-right: 25%;
+    /* text-align: center;
+    align-items: center;
+    justify-content: center; */
+
   }
   .error:hover{
     color: #b20606 ;

@@ -25,8 +25,8 @@ const Login = () => {
           setMessage(error.response.data.message  || error.message)
         }
       );
-    } catch (err) {
-
+    } catch (error) {
+      setMessage(error.response.data.message  || error.message)
     }
   };
 
@@ -61,9 +61,10 @@ const Login = () => {
         <span></span>
        
         </div>
-        <button type="submit">Log in</button>
+        <button type="submit">Log in</button> 
+        <h3 className="error">{message ? <p>{message}</p> : null}</h3>
       </form>
-      <h3 className="error">{message ? <p>{message}</p> : null}</h3>
+     
     </div>
   
 

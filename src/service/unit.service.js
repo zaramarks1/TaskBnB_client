@@ -4,7 +4,7 @@ import authHeader from "./auth.header";
 const API_URL = "http://localhost:8080/api/v1/units";
 
 const getAllUnits = () => {
-  return axios.get(API_URL);
+  return axios.get(API_URL, {headers: authHeader()});
 };
 
 const getUnitById = (id) =>{

@@ -52,9 +52,7 @@ const AddUnit = () =>{
        setUnit={setUnit} 
        buttonName='Create'
      >
-
      </UnitComponents.UnitForm>
-    
      <h3 className="error">{message ? <p>{message}</p> : null}</h3>
     <h3 className="success">{success ? <p>Unit was created ! </p> : null}</h3>
     </>

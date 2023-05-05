@@ -27,7 +27,7 @@ const Register = () => {
         },
         (error) => {
           console.log(error.message);
-          setMessage(error.response.data.message);
+          setMessage(error.response.data.message || error.message);
         }
       );
     } catch (err) {
@@ -76,9 +76,11 @@ const Register = () => {
         />
          </div>
         <button type="submit">Sign up</button>
+        <h3 className="error">{message ? <p>{message}</p> : null}</h3>
       </form>
+     
     </div>
-     <h3 className="error">{message ? <p>{message}</p> : null}</h3>
+  
      </>
   );
 };

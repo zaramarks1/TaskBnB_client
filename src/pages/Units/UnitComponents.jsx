@@ -14,7 +14,7 @@ const UnitForm = ({handleSubmit, unit, setUnit, buttonName}) =>{
             onChange={(e) => setUnit({...unit, capacity:e.target.value})}
           />
           <label className='inputLabel'>Address</label>
-          <input required
+          <input 
             type="text"
             value={unit.address}
             placeholder="Address"
@@ -31,7 +31,6 @@ const UnitForm = ({handleSubmit, unit, setUnit, buttonName}) =>{
         <br></br>
         <button type="submit">{buttonName}</button>
         </form>
-  
       </div>
 
         

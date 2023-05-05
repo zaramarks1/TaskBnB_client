@@ -88,15 +88,19 @@ const Sidebar = () => {
           {currentUser ? (
                 <>
                 {/* <NavIcon to='/view-units'>View All Units</NavIcon> */}
-
-                <NavIcon onClick={logOut} >Logout</NavIcon>
+                {currentUser.role === 'ADMIN' &&
+                  <>
+                      <NavIcon to='/view-units' >View all units</NavIcon>
+                      <NavIcon to='/register' >Register new user</NavIcon>
+                  </>
+                  
+                }
+                 <NavIcon onClick={logOut} >Logout</NavIcon>
                 </>
 
             ) : (
                 <>
                 <NavIcon to='/login'>Login</NavIcon>
-
-                <NavIcon to='/register' >Register</NavIcon>
                 </>
             )}
            
