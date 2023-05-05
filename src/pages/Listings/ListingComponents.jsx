@@ -152,17 +152,24 @@ const ViewListings = ({listings, isOwner=false}) =>{
                             <h3>
                               Status : {l.listingStatus}
                               {l.listingStatus == "HIDDEN" && (
+                                <>
                                 <button onClick={(e) => handleChangeStatus(e, l.id || l._id)}>
                                   PUBLISH
                                 </button>
+                                <EditListing listing={l}></EditListing>
+                                </>
+                                
                               )}
                               {l.listingStatus == "PUBLIC" && (
+                                <>
                                 <button onClick={(e) => handleChangeStatus(e, l.id || l._id)}>
                                   HIDE
                                 </button>
+                                <EditListing listing={l}></EditListing>
+                                </>   
                               )}
                             
-                              <EditListing listing={l}></EditListing>
+                             
                               <DeleteListing id={l._id || l.id}></DeleteListing>
                               <h3 className="error">{message  && listingErrorId === (l.id || l._id)? <p>{message}</p> : null}</h3>
                             </h3>
@@ -177,12 +184,64 @@ const ViewListings = ({listings, isOwner=false}) =>{
           </ul>
         </>
       );
-};      
+};     
+
+const SearchListings = ({handleSubmitSearch, filters, setFilters}) =>{
+
+  const handleRefresh= () => {
+    window.location.reload();
+  };
+
+return (
+  <>
+  <form onSubmit={handleSubmitSearch}>
+
+      <div className="search">
+      <label >Address</label>
+      <input 
+        type="text"
+        value={filters.address}
+        placeholder="Address"
+        onChange={(e) => setFilters({...filters, address:e.target.value})}
+      />
+       <label>Title</label>
+      <input
+        type="text"
+        value={filters.title}
+        placeholder="Title"
+        onChange={(e) => setFilters({...filters, title:e.target.value})}
+      />
+      {/* <br></br> */}
+      <label >Start By</label>
+      <input 
+        type="date"
+        value={filters.dateStart}
+        placeholder="Start Date"
+        onChange={(e) => setFilters({...filters, dateStart:e.target.value})}
+      />
+      <label >End By</label>
+      <input 
+        type="date"
+        value={filters.dateEnd}
+        placeholder="End Date"
+        onChange={(e) => setFilters({...filters, dateEnd:e.target.value})}
+      />
+      <button onClick={handleSubmitSearch}>Search</button>
+      <button onClick={ handleRefresh}>Reset</button>
+      </div>
+
+    </form>
+
+  </>
+);
+
+};
 
 const ListingComponents = {
     EditListing,
     ViewListings,
-    FormListing
+    FormListing,
+    SearchListings
 };
 
 

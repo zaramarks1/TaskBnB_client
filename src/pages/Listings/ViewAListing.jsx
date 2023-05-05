@@ -21,6 +21,11 @@ const ViewAListing = () =>{
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [requests, setRequests] = useState([]);
 
+    const [request, setRequest] = useState({
+        message:'',
+        requestStatus:'PENDING'
+    });
+
     const user = authService.getCurrentUser();
 
     useEffect(() => {
@@ -54,6 +59,7 @@ const ViewAListing = () =>{
 
     const handlePopUp= () => {
       setIsPopupOpen(!isPopupOpen);
+      console.log(isPopupOpen);
     }
 
 
@@ -101,7 +107,16 @@ const ViewAListing = () =>{
             :
             <>
             <h1>Is not owner</h1>
-            <button>Make a request</button>
+            <button onClick={handlePopUp}>Make a request</button>
+
+            {isPopupOpen &&
+              <>
+              <div className='popup'>
+                <h1>This is the pop up</h1>
+                <button onClick={handlePopUp}>Close</button>
+              </div>
+              </>
+            }
             </>
           }
           

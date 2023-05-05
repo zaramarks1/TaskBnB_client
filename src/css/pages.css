@@ -91,6 +91,19 @@
     text-align: center;
     color: black;
   }
+
+  .search input{
+    border-radius: 20px;
+     display:inline-block;
+     line-height: 10px;
+     font-weight: 200;
+     width: 200px;
+     height: 10px;
+  }
+
+  .search input[type=date]{
+    width: 100px;
+  }
   
   input {
     width: 300px;

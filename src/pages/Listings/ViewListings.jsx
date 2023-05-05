@@ -17,6 +17,14 @@ const Viewlistings = () => {
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
+    const [filters, setFilters] = useState({
+      title: '',
+      address: '',
+      description: '',
+      dateStart: '',
+      dateEnd: ''
+    });
+
     useEffect(() => {
       listingService.getAllListings().then(
         (response) => {
@@ -31,11 +39,37 @@ const Viewlistings = () => {
         }
       );
     }, []);
+
+    let handleSubmitSearch = async (e) => {
+      setMessage("");
+      e.preventDefault();
+
+      try {
+        await listingService.getSearchListings(filters).then(
+        (response) => {
+          // setUnit({capacity:'', address:'', unitType:''});
+          setData(response.data);
+          setSuccess(true);
+          // navigate('/my-units')
+          
+        },
+        (error) => {
+          setMessage(error.response.data.message || error.message);
+          console.log(error);
+        });
+      }catch (error){
+        console.log(error);
+        setMessage(error.response.data.message);
+      }
+    };
   
 return(
     <>
 
     <Title title = "View All Listings"/>
+
+    <ListingComponents.SearchListings filters={filters} setFilters={setFilters}
+       handleSubmitSearch={handleSubmitSearch} ></ListingComponents.SearchListings>
     <div className='divDisplay'>
     {/* {handleSubmit} */}
 

@@ -8,6 +8,8 @@ const Home = () => {
 
   useEffect(() => {
     const user = authService.getCurrentUser();
+    console.log(user)
+
 
     if (user) {
       setCurrentUser(user);

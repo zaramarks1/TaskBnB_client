@@ -16,6 +16,18 @@ const getMyListings = () => {
   return axios.get(API_URL + '/my', {headers: authHeader()});
 };
 
+const getSearchListings = (filters) =>{
+  return axios.get(API_URL + '/search', { params: {
+    address: filters.address,
+    // description: filters.description,
+    title: filters.title,
+    dateStart: filters.dateStart,
+    dateEnd: filters.dateEnd,
+    // listingStatus: listing.listingStatus,
+    // unitId: listing.unitId
+}})
+}
+
 const getRequestsByListing = (id) => {
   return axios.get(API_URL + '/'+id+'/requests', {headers: authHeader()});
 };
@@ -47,7 +59,7 @@ const updateListing = (id, listing) => {
 };
 
 const changeStatusListing =(id) =>{
-  console.log(authHeader())
+  // console.log(authHeader())
   return axios.put(API_URL + '/' + id +'/changeStatus', {},{ headers: authHeader() })
 
 
@@ -67,7 +79,8 @@ const listingService = {
   updateListing,
   deleteListing,
   changeStatusListing,
-  getRequestsByListing
+  getRequestsByListing,
+  getSearchListings
 };
 
 export default listingService;

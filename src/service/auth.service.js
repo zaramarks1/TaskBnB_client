@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const API_URL = "http://localhost:8080/api/v1/auth";
 
@@ -28,6 +29,7 @@ const login = (email, password) => {
     })
     .then((response) => {
       if (response.data.token) {
+        localStorage.setItem("token",response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data));
         window.location.reload();
       }
@@ -38,11 +40,16 @@ const login = (email, password) => {
 
 const logout = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("token");
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
-};
+  if(localStorage.getItem("token")){
+    return jwtDecode(localStorage.getItem("token"));
+  };
+  
+  }
+  
 
 const authService = {
   register,
