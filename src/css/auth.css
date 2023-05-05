@@ -47,7 +47,8 @@
     background-color: none !important;
 	font-weight: 700;
     box-shadow:0px;
-    display: block !important;
+   /* position:relative; */
+
 }
 
 .txt_field input:active,

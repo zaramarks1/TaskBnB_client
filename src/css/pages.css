@@ -225,6 +225,29 @@
     background-color: #a892ea;
     border-radius: 30px;
     color:white;
+    align-items: center !important;
+    /* position:relative; */
+  }
+
+  .closeButton{
+    background-color:#6D41F3;
+    box-shadow: none !important;
+    border-radius: 20px;
+    padding: 10px;
+    border-color: black;
+    font-size: 15px;
+    /* line-height: 20px; */
+    border-width: 0;
+    color: white;
+    position:fixed;
+    right:-5%;
+    top: -7%;
+    /* margin: 20px; */
+  }
+
+  .closeButton:hover {
+    background-color: #602ff1;
+    box-shadow: none;
   }
   
   /* .index{

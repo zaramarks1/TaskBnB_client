@@ -21,6 +21,8 @@ const ViewAListing = () =>{
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [requests, setRequests] = useState([]);
 
+    const [comment, setComment] = useState('');
+
     const [request, setRequest] = useState({
         message:'',
         requestStatus:'PENDING'
@@ -61,8 +63,6 @@ const ViewAListing = () =>{
       setIsPopupOpen(!isPopupOpen);
       console.log(isPopupOpen);
     }
-
-
 
     return (
         <>
@@ -112,8 +112,22 @@ const ViewAListing = () =>{
             {isPopupOpen &&
               <>
               <div className='popup'>
-                <h1>This is the pop up</h1>
-                <button onClick={handlePopUp}>Close</button>
+              <button onClick={handlePopUp} className='closeButton'>Close</button>
+                <h1 className='title'>Make a request
+                </h1>
+                <form onSubmit={handlePopUp}>
+                <label className='inputLabel'>Leave a comment </label>
+                <div className="txt_field" >
+                  <input
+                    type="text"
+                    placeholder="comment"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  />
+                  </div>
+                  </form>
+                
+                <button onClick={handlePopUp}>Send</button>
               </div>
               </>
             }
