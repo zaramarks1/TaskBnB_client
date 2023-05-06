@@ -7,6 +7,7 @@ import listingService from '../../service/listing.service';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import ListingComponents from './ListingComponents';
 import authService from '../../service/auth.service';
+import requestService from '../../service/request.service';
 
 
 
@@ -62,7 +63,34 @@ const ViewAListing = () =>{
     const handlePopUp= () => {
       setIsPopupOpen(!isPopupOpen);
       console.log(isPopupOpen);
-    }
+    };
+
+
+    let handleSubmitRequest = async (e) => {
+      setMessage("");
+      e.preventDefault();
+
+      try {
+        await requestService.addRequest(params.id, comment).then(
+        (response) => {
+          console.log(response);
+          // setUnit({capacity:'', address:'', unitType:''});
+          setSuccess(true);
+          // navigate('/my-units')
+          setIsPopupOpen(!isPopupOpen);
+          window.location.reload();
+          
+        },
+        (error) => {
+          setMessage(error.response.data.message || error.message);
+          console.log(error);
+        });
+      }catch (error){
+        console.log(error);
+        setMessage(error.response.data.message);
+      }
+    };
+  
 
     return (
         <>
@@ -115,7 +143,7 @@ const ViewAListing = () =>{
               <button onClick={handlePopUp} className='closeButton'>Close</button>
                 <h1 className='title'>Make a request
                 </h1>
-                <form onSubmit={handlePopUp}>
+                <form onSubmit={handleSubmitRequest}>
                 <label className='inputLabel'>Leave a comment </label>
                 <div className="txt_field" >
                   <input
@@ -125,9 +153,10 @@ const ViewAListing = () =>{
                     onChange={(e) => setComment(e.target.value)}
                   />
                   </div>
+                  <button type="submit">Send</button>
                   </form>
                 
-                <button onClick={handlePopUp}>Send</button>
+               
               </div>
               </>
             }
