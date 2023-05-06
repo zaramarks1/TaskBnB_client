@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import requestService from '../../service/request.service';
 import unitService from '../../service/unit.service';
 
-const ViewMyUnits = () => {
+const ViewMyRequests = () => {
 
 
     const [success, setSuccess] = useState(false);
@@ -24,7 +24,7 @@ const ViewMyUnits = () => {
         },
         (error) => {
           setMessage(error.response.data.message);
-          setData(null);
+          setRequests(null);
           setLoading(false);
         }
       );
@@ -46,10 +46,11 @@ return(
         {requests &&
           requests.map(r => (
 
-            <Link to={`/view-a-unit/${r.id || r._id}`}>
+            <Link to={`/view-a-listing/${r.listingId || r._listingId}`}>
                   <>
                   <li className='list' key = {r.id || r._id}  >
-                    <h3>Description : {r.description}</h3>
+                    <h3>Comment : {r.comment}</h3>
+                    <h3>Request Status : {r.requestStatus}</h3>
                     <h3>Listind id : {r.listingId }</h3>
                   </li>
                   </>
@@ -63,4 +64,4 @@ return(
 
 };
 
-export default ViewMyUnits;
+export default ViewMyRequests;

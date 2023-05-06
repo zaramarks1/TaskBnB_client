@@ -11,8 +11,13 @@ const addRequest = (listingId, comment) => {
   },  { headers: authHeader() })
   };
 
+  const getMyRequests = () => {
+    return axios.get(API_URL + '/my', {headers: authHeader()});
+  };
+
   const requestService = {
-    addRequest
+    addRequest,
+    getMyRequests
   };
   
   export default requestService;

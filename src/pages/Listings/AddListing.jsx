@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../css/pages.css';
 import {useState, useEffect} from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import Title from '../Title';
 
 import unitService from '../../service/unit.service';
@@ -12,7 +12,8 @@ const AddListing = () =>{
 
     const params = useParams();
     const location = useLocation();
-    const unit = location.state?.unit
+    const unit = location.state?.unit;
+    const navigate = useNavigate();
 
     const [listing, setListing] = useState({
         title: '',
@@ -35,8 +36,9 @@ const AddListing = () =>{
       try {
         await listingService.addListing(listing).then(
         (response) => {
-            setListing('');
+            // setListing('');
             setSuccess(true);
+            navigate('/my-units');
         },
         (error) => {
           setMessage(error.response.data.message);

@@ -90,6 +90,11 @@ const ViewAListing = () =>{
         setMessage(error.response.data.message);
       }
     };
+
+    let handledeyRequets = async (e) =>{
+
+
+    }
   
 
     return (
@@ -121,7 +126,7 @@ const ViewAListing = () =>{
                     {request.requestStatus === 'PENDING' &&
                         <>
                           <button onClick={handlePopUp}>Accept</button>
-                          <button onClick={handlePopUp}>Deny</button>
+                          <button onClick={handledeyRequets}>Deny</button>
                         </>
                         
                     }

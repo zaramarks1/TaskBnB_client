@@ -47,8 +47,8 @@ export const SidebarData = [
     ]
   },
   {
-    title: 'My Request (not working)',
-    path: '/myRequests',
+    title: 'My Request ',
+    path: '/my-requests',
     icon: <FaIcons.FaCartPlus />
   },
   {
