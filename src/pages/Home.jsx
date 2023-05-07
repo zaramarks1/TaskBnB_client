@@ -21,7 +21,11 @@ const Home = () => {
      
       <Title title="Welcome to TaskBnB" />
 
-      <div className='divDisplay'>
+      <button onClick={() => window.open('/javadoc/index.html', '_blank')}>
+        View Javadoc
+      </button>
+
+      <div>
 
       { currentUser ? (
         <>

@@ -1,0 +1,9 @@
+edu.iit.sat.itmd4515.zmarks
+edu.iit.sat.itmd4515.zmarks.config
+edu.iit.sat.itmd4515.zmarks.controller
+edu.iit.sat.itmd4515.zmarks.dto
+edu.iit.sat.itmd4515.zmarks.entity
+edu.iit.sat.itmd4515.zmarks.helper
+edu.iit.sat.itmd4515.zmarks.repository
+edu.iit.sat.itmd4515.zmarks.service
+edu.iit.sat.itmd4515.zmarks.types
