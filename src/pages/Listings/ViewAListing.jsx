@@ -74,10 +74,9 @@ const ViewAListing = () =>{
         await requestService.addRequest(params.id, comment).then(
         (response) => {
           console.log(response);
-          // setUnit({capacity:'', address:'', unitType:''});
           setSuccess(true);
-          // navigate('/my-units')
           setIsPopupOpen(!isPopupOpen);
+          alert("Your request was submitted!");
           window.location.reload();
           
         },
@@ -91,8 +90,69 @@ const ViewAListing = () =>{
       }
     };
 
-    let handledeyRequets = async (e) =>{
+    let handleDenyRequest = async (e, id) =>{
+      setMessage("");
+      e.preventDefault();
+      try{
 
+        await requestService.denyRequest(id).then(
+          (response) => {
+            console.log(response);
+            setSuccess(true);
+            window.location.reload();
+          },
+          (error) => {
+            setMessage(error.response.data.message || error.message);
+            console.log(error);
+          });
+        }catch (error){
+          console.log(error);
+          setMessage(error.response.data.message);
+        }
+
+    }
+
+    let handleAcceptRequest = async (e, id) =>{
+      setMessage("");
+      e.preventDefault();
+      try{
+
+        await requestService.acceptRequest(id).then(
+          (response) => {
+            console.log(response);
+            setSuccess(true);
+            window.location.reload();
+          },
+          (error) => {
+            setMessage(error.response.data.message || error.message);
+            console.log(error);
+          });
+        }catch (error){
+          console.log(error);
+          setMessage(error.response.data.message);
+        }
+
+    }
+
+    let handleDeleteRequest = async (e, id) =>{
+      setMessage("");
+      e.preventDefault();
+      try{
+
+        await requestService.deleteRequest(id).then(
+          (response) => {
+            setSuccess(true);
+            window.location.reload();
+            alert("Request deleted!")
+          },
+          (error) => {
+            setMessage(error.response.data.message || error.message);
+            console.log(error);
+          });
+        }catch (error){
+          console.log(error);
+          setMessage(error.response.data.message);
+        }
 
     }
   
@@ -113,6 +173,7 @@ const ViewAListing = () =>{
 
             {isOwner ? 
               <>
+              <h1>You are the owner of this listing</h1>
                <h2>Requests : {requests.length} </h2>
               <ul>
               { requests && requests.map(request => (
@@ -125,11 +186,17 @@ const ViewAListing = () =>{
 
                     {request.requestStatus === 'PENDING' &&
                         <>
-                          <button onClick={handlePopUp}>Accept</button>
-                          <button onClick={handledeyRequets}>Deny</button>
-                        </>
-                        
+                    <button onClick={(e) => handleAcceptRequest(e, request.id || request._id)}>
+                                  Accept
+                    </button>
+                    <button onClick={(e) => handleDenyRequest(e, request.id || request._id)}>
+                                  Deny
+                    </button>
+                      </>
                     }
+                    <button onClick={(e) => handleDeleteRequest(e, request.id || request._id)}>
+                                  Delete
+                    </button>
                   </li>
                 </>
                  ))
@@ -139,8 +206,17 @@ const ViewAListing = () =>{
             </>
             :
             <>
-            <h1>Is not owner</h1>
-            <button onClick={handlePopUp}>Make a request</button>
+            {user ? (
+              <>
+
+              {data.listingStatus === 'PUBLIC'  &&
+                <button onClick={handlePopUp}>Make a request</button>
+              }
+              </>
+            ):
+              <h1>Login to make a request!</h1>
+            }
+           
 
             {isPopupOpen &&
               <>

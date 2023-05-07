@@ -52,8 +52,8 @@ export const SidebarData = [
     icon: <FaIcons.FaCartPlus />
   },
   {
-    title: 'My Reservations (not working)',
-    path: '/myReservations',
+    title: 'My Reservations ',
+    path: '/my-reservations',
     icon: <IoIcons.IoMdPeople />
   },
   {

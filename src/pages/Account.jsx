@@ -31,7 +31,11 @@ const Account = () =>{
 
             <h1>Email : {currentUser.email}</h1>
             <h1> Name : {currentUser.firstname} {currentUser.lastname}</h1>
-            {/* <h1></h1> */}
+
+            {currentUser.role === 'ADMIN' &&
+                <h1>You are an admin user!</h1>
+            }
+           
             
             </>
             

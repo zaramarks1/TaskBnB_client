@@ -5,58 +5,37 @@ import Title from '../Title';
 import { Link } from 'react-router-dom';
 import requestService from '../../service/request.service';
 import unitService from '../../service/unit.service';
+import reservationService from '../../service/reservation.service';
 
-const ViewMyRequests = () => {
+const ViewMyReservations = () => {
 
 
     const [success, setSuccess] = useState(false);
-    const [requests, setRequests] = useState([]);
+    const [reservations, setReservations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
     useEffect(() => {
-      requestService.getMyRequests().then(
+        reservationService.getMyReservations().then(
         (response) => {
-          setRequests(response.data);
+          setReservations(response.data);
           setSuccess(true);
           setLoading(false);
         },
         (error) => {
           setMessage(error.response.data.message);
-          setRequests(null);
+          setReservations(null);
           setLoading(false);
         }
       );
     }, []);
 
-    let handleDeleteRequest = async (e, id) =>{
-      setMessage("");
-      e.preventDefault();
-      try{
-
-        await requestService.deleteRequest(id).then(
-          (response) => {
-            setSuccess(true);
-            window.location.reload();
-            alert("Request deleted!")
-          },
-          (error) => {
-            setMessage(error.response.data.message || error.message);
-            console.log(error);
-          });
-        }catch (error){
-          console.log(error);
-          setMessage(error.response.data.message);
-        }
-
-    }
-  
   
 return(
     <>
 
-    <Title title = "Your Requests"/>
+    <Title title = "Your Reservations"/>
     <div className='divDisplay'>
     {/* {handleSubmit} */}
 
@@ -66,18 +45,13 @@ return(
     {/* {this.state.data.map(d => (<li key={d.id}>{d.name}</li>))}  */}
 
     <ul>
-        {requests &&
-          requests.map(r => (
+        {reservations &&
+          reservations.map(r => (
 
-            <Link to={`/view-a-listing/${r.listingId || r._listingId}`}>
+            <Link to={`/view-a-listing/${r.listingId}`}>
                   <>
                   <li className='list' key = {r.id || r._id}  >
-                    <h3>Comment : {r.comment}</h3>
-                    <h3>Request Status : {r.requestStatus}</h3>
                     <h3>Listind id : {r.listingId }</h3>
-                    <button onClick={(e) => handleDeleteRequest(e, r.id || r._id)}>
-                                  Delete
-                    </button>
                   </li>
                   </>
             </Link>
@@ -90,4 +64,4 @@ return(
 
 };
 
-export default ViewMyRequests;
+export default ViewMyReservations;

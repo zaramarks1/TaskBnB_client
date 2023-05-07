@@ -15,6 +15,7 @@ import ViewListings from './Listings/ViewListings';
 import AddListing from './Listings/AddListing';
 import UpdateListing from './Listings/UpdateListing';
 import ViewMyRequests from './Requests/ViewMyRequests';
+import ViewMyReservations from './Reservations/ViewMyReservations';
 
 const Main = () => {
   return (
@@ -33,6 +34,7 @@ const Main = () => {
       <Route exact path='/view-a-listing/:id' element={<ViewAListing/>}></Route>
       <Route exact path='/view-a-listing/:id/update' element={<UpdateListing/>}></Route>
       <Route exact path='/my-requests' element={<ViewMyRequests/>}></Route>
+      <Route exact path='/my-reservations' element={<ViewMyReservations/>}></Route>
 
     </Routes>
   );

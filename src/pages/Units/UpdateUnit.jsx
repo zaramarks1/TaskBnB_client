@@ -14,7 +14,13 @@ const UpdateUnit = () =>{
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [unit, setUnit] = useState(location.state?.unit);
+    // const [unit, setUnit] = useState(location.state?.unit);
+
+    const [unit, setUnit] = useState({
+      capacity: location.state?.unit.capacity || 0,
+      address: location.state?.unit.address || '',
+      unitType:location.state?.unit.unitType || 'HOUSE'
+  });
     const [message, setMessage] = useState("");
 
     // useEffect(() => {

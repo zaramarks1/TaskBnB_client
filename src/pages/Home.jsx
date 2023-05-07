@@ -24,8 +24,17 @@ const Home = () => {
       <div className='divDisplay'>
 
       { currentUser ? (
-        <h2>You are logged in! 
-        </h2>
+        <>
+
+        <h2>You are logged in! </h2>
+
+        {currentUser.role === 'ADMIN' &&
+        <h1>You are an admin user!</h1>
+        }
+        
+        </>
+      
+
       ) : (
         <h1>You are not logged in!</h1>
       )}

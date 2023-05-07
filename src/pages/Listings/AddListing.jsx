@@ -38,7 +38,7 @@ const AddListing = () =>{
         (response) => {
             // setListing('');
             setSuccess(true);
-            navigate('/my-units');
+            navigate('/view-a-unit/' + params.id);
         },
         (error) => {
           setMessage(error.response.data.message);

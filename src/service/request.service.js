@@ -15,9 +15,24 @@ const addRequest = (listingId, comment) => {
     return axios.get(API_URL + '/my', {headers: authHeader()});
   };
 
+  const denyRequest = (id) => {
+    return axios.put(API_URL + "/" + id + "/deny",{}, {headers: authHeader()});
+  };
+
+  const acceptRequest = (id) => {
+    return axios.put(API_URL + "/" + id + "/accept",{}, {headers: authHeader()});
+  };
+
+  const deleteRequest = (id) => {
+    return axios.delete(API_URL + "/" + id , {headers: authHeader()});
+  };
+
   const requestService = {
     addRequest,
-    getMyRequests
+    getMyRequests,
+    denyRequest,
+    deleteRequest,
+    acceptRequest
   };
   
   export default requestService;
